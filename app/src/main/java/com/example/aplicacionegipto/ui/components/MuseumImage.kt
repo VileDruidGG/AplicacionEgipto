@@ -19,6 +19,13 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.example.aplicacionegipto.ui.theme.*
 
+/**
+ * Componente de imagen con Coil.
+ * FIX: Se agrega User-Agent header porque Wikimedia Commons
+ * bloquea peticiones sin User-Agent valido (403 Forbidden).
+ * Tambien se agrega allowHardware(false) para evitar crashes
+ * en algunos dispositivos con hardware bitmap.
+ */
 @Composable
 fun MuseumAsyncImage(
     imageUrl: String,
@@ -30,25 +37,37 @@ fun MuseumAsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
             .data(imageUrl)
             .crossfade(true)
+            .addHeader("User-Agent", "MuseoEgiptoApp/1.0 (Android; Coil)")
+            .allowHardware(false)
             .build(),
         contentDescription = description,
         contentScale = contentScale,
         modifier = modifier.semantics { contentDescription = description },
         loading = {
             Box(
-                modifier = Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.2f), LapisLazuli.copy(alpha = 0.15f)))),
+                modifier = Modifier.fillMaxSize().background(
+                    Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.2f), LapisLazuli.copy(alpha = 0.15f)))
+                ),
                 contentAlignment = Alignment.Center
-            ) { CircularProgressIndicator(color = GoldPharaoh, strokeWidth = 2.dp, modifier = Modifier.size(24.dp)) }
+            ) {
+                CircularProgressIndicator(color = GoldPharaoh, strokeWidth = 2.dp, modifier = Modifier.size(24.dp))
+            }
         },
         error = {
             Box(
-                modifier = Modifier.fillMaxSize().background(Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.3f), LapisLazuli.copy(alpha = 0.2f)))),
+                modifier = Modifier.fillMaxSize().background(
+                    Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.3f), LapisLazuli.copy(alpha = 0.2f)))
+                ),
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = "𓂀", fontSize = 28.sp)
+                    Text(text = "E", fontSize = 28.sp)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(text = "Imagen no disponible", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
+                    Text(
+                        text = "Imagen no disponible",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                    )
                 }
             }
         }
