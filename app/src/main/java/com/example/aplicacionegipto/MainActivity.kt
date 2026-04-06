@@ -4,44 +4,35 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.aplicacionegipto.ui.theme.AplicacionEgiptoTheme
+import androidx.compose.runtime.*
+import androidx.navigation.compose.rememberNavController
+import com.example.aplicacionegipto.ui.navigation.MuseumNavGraph
+import com.example.aplicacionegipto.ui.theme.MuseoEgiptoTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
-            AplicacionEgiptoTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            var textScale by remember { mutableFloatStateOf(1.0f) }
+            var highContrast by remember { mutableStateOf(false) }
+
+            MuseoEgiptoTheme(
+                highContrast = highContrast,
+                textScale = textScale
+            ) {
+                val navController = rememberNavController()
+
+                MuseumNavGraph(
+                    navController = navController,
+                    textScale = textScale,
+                    highContrast = highContrast,
+                    onTextScaleChange = { textScale = it },
+                    onHighContrastChange = { highContrast = it }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AplicacionEgiptoTheme {
-        Greeting("Android")
     }
 }
