@@ -46,7 +46,7 @@ fun MuseumAsyncImage(
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = "\u{13080}", fontSize = 28.sp)
+                    Text(text = "𓂀", fontSize = 28.sp)
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(text = "Imagen no disponible", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
                 }
