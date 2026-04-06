@@ -5,81 +5,82 @@ import com.example.aplicacionegipto.model.*
 object MuseumRepository {
 
     private val vidaCotidianaImages = listOf(
-        MuseumImage("vc1","vc1","Banquete tumba de Nakht","Musicos y bailarines en banquete egipcio"),
-        MuseumImage("vc2","vc2","Tumba de Sennedjem","Pinturas de la tumba del artesano Sennedjem"),
-        MuseumImage("vc3","vc3","El escriba sentado","Estatua de escriba con papiro del Louvre"),
-        MuseumImage("vc4","vc4","Cosecha tumba de Menna","Escenas agricolas de la tumba de Menna"),
-        MuseumImage("vc5","vc5","Artesanos de Ipui","Artesanos trabajando en la tumba de Ipui"),
-        MuseumImage("vc6","vc6","Pesca en el Nilo","Escena de pesca con arpones en el Nilo"),
-        MuseumImage("vc7","vc7","Panaderia egipcia","Modelo de fabricacion de pan egipcio"),
-        MuseumImage("vc8","vc8","Tablero de Senet","Tablero del juego Senet de Amenhotep III"),
-        MuseumImage("vc9","vc9","Papiro medico","Papiro Edwin Smith con recetas medicas"),
-        MuseumImage("vc10","vc10","Familia de Nebsen","Estatua de pareja Nebsen y Nebet-Ta")
+        MuseumImage("vc1","vc1","Hipopotamo William","Figurilla de fayenza azul decorada con lotos"),
+        MuseumImage("vc2","vc2","Esfinge de Senwosret III","Esfinge de gneis del faraon Senwosret III"),
+        MuseumImage("vc3","vc3","Esfinge de Amenhotep III","Esfinge de fayenza azul con manos humanas"),
+        MuseumImage("vc4","vc4","Esfinge Amenhotep lateral","Vista lateral de la esfinge de fayenza"),
+        MuseumImage("vc5","vc5","Esfinge Amenhotep frontal","Vista frontal de la esfinge azul"),
+        MuseumImage("vc6","vc6","Esfinge Amenhotep detalle","Detalle de la esfinge de Amenhotep III"),
+        MuseumImage("vc7","vc7","Mascara funeraria dorada","Mascara de oro de Hatnefer madre de Senenmut"),
+        MuseumImage("vc8","vc8","Esfinge Hatshepsut frontal","Gran esfinge de granito de la faraona"),
+        MuseumImage("vc9","vc9","Esfinge Hatshepsut lateral","Vista lateral de la esfinge de Hatshepsut"),
+        MuseumImage("vc10","vc10","Esfinge Hatshepsut superior","Vista desde arriba de la esfinge")
     )
     private val arquitecturaImages = listOf(
-        MuseumImage("ar1","ar1","Piramides de Giza","Las tres Grandes Piramides al atardecer"),
-        MuseumImage("ar2","ar2","Gran Esfinge","Esfinge de Giza con piramide de Khafre"),
-        MuseumImage("ar3","ar3","Valle de los Reyes","Entrada al Valle de los Reyes"),
-        MuseumImage("ar4","ar4","Templo de Filae","Templo de Isis en la isla de Filae"),
-        MuseumImage("ar5","ar5","Templo de Karnak","Sala Hipostila con columnas gigantes"),
-        MuseumImage("ar6","ar6","Abu Simbel","Colosos de Ramses II en Abu Simbel"),
-        MuseumImage("ar7","ar7","Templo de Luxor","Entrada del Templo de Luxor"),
-        MuseumImage("ar8","ar8","Piramide escalonada","Piramide de Zoser en Saqqara"),
-        MuseumImage("ar9","ar9","Obelisco de Hatshepsut","Obelisco en el Templo de Karnak"),
-        MuseumImage("ar10","ar10","Interior piramide","Pasillo dentro de la Gran Piramide")
+        MuseumImage("ar1","ar1","Esfinge Hatshepsut angulo","Angulo dramatico de la esfinge"),
+        MuseumImage("ar2","ar2","Esfinge Hatshepsut detalle cara","Rostro idealizado de Hatshepsut"),
+        MuseumImage("ar3","ar3","Esfinge Hatshepsut restauracion","Vista de la restauracion del monumento"),
+        MuseumImage("ar4","ar4","Esfinge Hatshepsut excavacion","Foto historica de la excavacion"),
+        MuseumImage("ar5","ar5","Esfinge Hatshepsut completa","Vista completa del monumento restaurado"),
+        MuseumImage("ar6","ar6","Sarcofago de Henettawy frontal","Sarcofago pintado de la cantora de Amun"),
+        MuseumImage("ar7","ar7","Sarcofago Henettawy detalle","Detalle de las pinturas del sarcofago"),
+        MuseumImage("ar8","ar8","Sarcofago Henettawy lateral","Vista lateral del sarcofago decorado"),
+        MuseumImage("ar9","ar9","Sarcofago de Ukhhotep","Sarcofago del tesoro real Ukhhotep"),
+        MuseumImage("ar10","ar10","Cuchara cosmetica","Cuchara en forma de mujer nadando")
     )
     private val arteImages = listOf(
-        MuseumImage("at1","at1","Jeroglificos Hatshepsut","Jeroglificos tallados en templo de Hatshepsut"),
-        MuseumImage("at2","at2","Pintura de Nefertari","Reina Nefertari en su tumba"),
-        MuseumImage("at3","at3","Busto de Nefertiti","Famoso busto policromado de Nefertiti"),
-        MuseumImage("at4","at4","Sarcofago de Tutankamon","Sarcofago interior dorado"),
-        MuseumImage("at5","at5","Libro de los Muertos","Papiro del Juicio de Osiris de Hunefer"),
-        MuseumImage("at6","at6","Collar ceremonial","Collar pectoral con halcon de Google Art"),
-        MuseumImage("at7","at7","Anubis momificacion","Anubis atendiendo momia de Sennedjem"),
-        MuseumImage("at8","at8","Nebamun cazando","Pintura de caza en los pantanos del Nilo"),
-        MuseumImage("at9","at9","Relieve Medinet Habu","Relieves de batalla de Ramses III"),
-        MuseumImage("at10","at10","Pintura tumba Tutankamon","Escena de la tumba de Tutankamon")
+        MuseumImage("at1","at1","Esfinge Senwosret perfil","Vista de perfil de la esfinge de gneis"),
+        MuseumImage("at2","at2","Esfinge Senwosret angulo","Angulo de tres cuartos de la esfinge"),
+        MuseumImage("at3","at3","Esfinge Senwosret detalle mane","Detalle de la melena de leon"),
+        MuseumImage("at4","at4","Esfinge Senwosret trasera","Vista trasera de la escultura"),
+        MuseumImage("at5","at5","Esfinge Senwosret rostro","Primer plano del rostro del faraon"),
+        MuseumImage("at6","at6","Esfinge Senwosret completa","Vista general de la pieza completa"),
+        MuseumImage("at7","at7","Esfinge Senwosret base","Detalle de la base con jeroglificos"),
+        MuseumImage("at8","at8","Hipopotamo William lateral","Vista lateral del hipopotamo de fayenza"),
+        MuseumImage("at9","at9","Sarcofago Henettawy arte","Decoracion artistica del sarcofago"),
+        MuseumImage("at10","at10","Mascara Hatnefer perfil","Vista de perfil de la mascara dorada")
     )
 
-    // === TODAS LAS URLs SON WIKIMEDIA COMMONS (verificado que funcionan) ===
+    // === TODAS URLs del Met Museum IIIF (verificadas del HTML de metmuseum.org) ===
+    // Formato: collectionapi.metmuseum.org/api/collection/v1/iiif/{objectID}/{imageID}/main-image
 
     val imageUrlsVidaCotidiana = listOf(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Maler_der_Grabkammer_des_Nacht_001.jpg/640px-Maler_der_Grabkammer_des_Nacht_001.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tomb_of_Sennedjem_%281%29.jpg/640px-Tomb_of_Sennedjem_%281%29.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Egyptian_-_The_Seated_Scribe_-_Google_Art_Project.jpg/400px-Egyptian_-_The_Seated_Scribe_-_Google_Art_Project.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Maler_der_Grabkammer_des_Menna_008.jpg/640px-Maler_der_Grabkammer_des_Menna_008.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Maler_der_Grabkammer_des_Ipui_001.jpg/640px-Maler_der_Grabkammer_des_Ipui_001.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fishing_scene%2C_Tomb_of_Menna.jpg/640px-Fishing_scene%2C_Tomb_of_Menna.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Egypte_lobread.jpg/480px-Egypte_lobread.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Gaming_Board_Inscribed_for_Amenhotep_III_MET_DP116866.jpg/640px-Gaming_Board_Inscribed_for_Amenhotep_III_MET_DP116866.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Edwin_Smith_Papyrus_v2.jpg/640px-Edwin_Smith_Papyrus_v2.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Egyptian_-_Pair_Statue_of_Nebsen_and_Nebet-Ta_-_Walters_2286.jpg/400px-Egyptian_-_Pair_Statue_of_Nebsen_and_Nebet-Ta_-_Walters_2286.jpg"
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544227/1216904/main-image",  // William hippo
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Senwosret sphinx
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Amenhotep sphinx 3/4
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1177790/main-image",  // Amenhotep sphinx side
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1081887/main-image",  // Amenhotep sphinx front
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1081899/main-image",  // Amenhotep sphinx detail
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Hatnefer mask
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Hatshepsut sphinx
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106256/main-image",  // Hatshepsut side
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106259/main-image"   // Hatshepsut angle
     )
 
     val imageUrlsArquitectura = listOf(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/640px-Kheops-Pyramid.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Great_Sphinx_of_Giza_-_20080716a.jpg/640px-Great_Sphinx_of_Giza_-_20080716a.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ValleyOfTheKings_2007.jpg/640px-ValleyOfTheKings_2007.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Philae_Temple_R01.jpg/640px-Philae_Temple_R01.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/S_F-E-CAMERON_2006-10-EGYPT-KARNAK-0177.JPG/640px-S_F-E-CAMERON_2006-10-EGYPT-KARNAK-0177.JPG",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Abu_Simbel%2C_Ramesses_Temple%2C_front%2C_Egypt%2C_Oct_2004.jpg/640px-Abu_Simbel%2C_Ramesses_Temple%2C_front%2C_Egypt%2C_Oct_2004.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Luxor_Temple_R03.jpg/640px-Luxor_Temple_R03.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Saqqara_BW_5.jpg/640px-Saqqara_BW_5.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Obelisk_of_Hatshepsut.jpg/320px-Obelisk_of_Hatshepsut.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Great_Pyramid_Passages.jpg/400px-Great_Pyramid_Passages.jpg"
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106260/main-image",  // Hatshepsut dramatic
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106257/main-image",  // Hatshepsut face
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106255/main-image",  // Hatshepsut restored
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1228544/main-image",  // Hatshepsut excavation
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1228545/main-image",  // Hatshepsut complete
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",  // Henettawy coffin
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1578431/main-image",  // Henettawy detail
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1578434/main-image",  // Henettawy side
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546303/1192591/main-image",  // Ukhhotep coffin
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548584/preview"              // Cosmetic spoon
     )
 
     val imageUrlsArte = listOf(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Egyptian_hieroglyphs_at_Hatshepsut_temple.jpg/640px-Egyptian_hieroglyphs_at_Hatshepsut_temple.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Maler_der_Grabkammer_der_Nefertari_001.jpg/480px-Maler_der_Grabkammer_der_Nefertari_001.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nofretete_Neues_Museum.jpg/360px-Nofretete_Neues_Museum.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Innerster_Sarg_des_Tutanchamun.jpg/320px-Innerster_Sarg_des_Tutanchamun.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Book_of_the_Dead_of_Hunefer_sheet_3.jpg/640px-Book_of_the_Dead_of_Hunefer_sheet_3.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Egyptian_-_Broad_Collar_-_Google_Art_Project.jpg/600px-Egyptian_-_Broad_Collar_-_Google_Art_Project.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Anubis_attending_the_mummy_of_Sennedjem.jpg/480px-Anubis_attending_the_mummy_of_Sennedjem.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nebamun_Hunting_in_the_Marshes%2C_British_Museum.jpg/640px-Nebamun_Hunting_in_the_Marshes%2C_British_Museum.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Medinet_Habu_Ramses_III._Tempel_30.jpg/640px-Medinet_Habu_Ramses_III._Tempel_30.jpg",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tomb_of_Tutankhamun_%28KV62%29%2C_Wall_painting%2C_Valley_of_the_Kings%2C_Egypt.jpg/640px-Tomb_of_Tutankhamun_%28KV62%29%2C_Wall_painting%2C_Valley_of_the_Kings%2C_Egypt.jpg"
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Senwosret main
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544227/1216904/main-image",  // William main
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Amenhotep main
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Hatnefer mask
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1151968/main-image",  // Hatshepsut historic
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",  // Henettawy art
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Hatshepsut grand
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1177790/main-image",  // Amenhotep art
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1578431/main-image",  // Henettawy painting
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106255/main-image"   // Hatshepsut closeup
     )
 
     private val vidaCotidianaAudios = listOf(
