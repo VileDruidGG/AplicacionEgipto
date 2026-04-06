@@ -5,112 +5,103 @@ import com.example.aplicacionegipto.model.*
 object MuseumRepository {
 
     private val vidaCotidianaImages = listOf(
-        MuseumImage("vc1","vc1","Modelo de barco del Nilo","Barco de madera pintada de la tumba de Meketre navegando el Nilo"),
-        MuseumImage("vc2","vc2","Modelo de jardin","Jardin en miniatura con arboles de la tumba de Meketre"),
-        MuseumImage("vc3","vc3","Esfinge de Senwosret III","Esfinge del faraon Senwosret III en gneis"),
-        MuseumImage("vc4","vc4","Esfinge azul de Amenhotep","Esfinge de fayenza azul del faraon Amenhotep III"),
-        MuseumImage("vc5","vc5","Escriba sentado","Estatua de escriba sentado con papiro desplegado"),
-        MuseumImage("vc6","vc6","Tumba de Perneb","Capilla funeraria de la mastaba de Perneb"),
-        MuseumImage("vc7","vc7","Modelo de panaderia","Modelo de madera mostrando fabricacion de pan y cerveza"),
-        MuseumImage("vc8","vc8","Collar de princesa","Pectoral de oro de la princesa Sithathoryunet"),
-        MuseumImage("vc9","vc9","Cabeza de faraon","Cabeza de estatua real del Reino Medio"),
-        MuseumImage("vc10","vc10","Hipopotamo William","Figurilla de hipopotamo de fayenza azul, mascota del Met")
+        MuseumImage("vc1","vc1","Banquete tumba de Nakht","Musicos y bailarines en banquete egipcio"),
+        MuseumImage("vc2","vc2","Tumba de Sennedjem","Pinturas de la tumba del artesano Sennedjem"),
+        MuseumImage("vc3","vc3","El escriba sentado","Estatua de escriba con papiro del Louvre"),
+        MuseumImage("vc4","vc4","Cosecha tumba de Menna","Escenas agricolas de la tumba de Menna"),
+        MuseumImage("vc5","vc5","Artesanos de Ipui","Artesanos trabajando en la tumba de Ipui"),
+        MuseumImage("vc6","vc6","Pesca en el Nilo","Escena de pesca con arpones en el Nilo"),
+        MuseumImage("vc7","vc7","Panaderia egipcia","Modelo de fabricacion de pan egipcio"),
+        MuseumImage("vc8","vc8","Tablero de Senet","Tablero del juego Senet de Amenhotep III"),
+        MuseumImage("vc9","vc9","Papiro medico","Papiro Edwin Smith con recetas medicas"),
+        MuseumImage("vc10","vc10","Familia de Nebsen","Estatua de pareja Nebsen y Nebet-Ta")
     )
     private val arquitecturaImages = listOf(
-        MuseumImage("ar1","ar1","Piramides de Giza","Las tres Grandes Piramides de Giza"),
-        MuseumImage("ar2","ar2","Templo de Karnak","Columnas de la Sala Hipostila de Karnak"),
-        MuseumImage("ar3","ar3","Gran Esfinge de Giza","Esfinge con piramide de Khafre de fondo"),
-        MuseumImage("ar4","ar4","Templo de Dendur","Templo egipcio completo en el Metropolitan Museum"),
-        MuseumImage("ar5","ar5","Abu Simbel","Colosos de Ramses II tallados en la roca"),
-        MuseumImage("ar6","ar6","Templo de Luxor","Fachada del Templo de Luxor al anochecer"),
-        MuseumImage("ar7","ar7","Valle de los Reyes","Entrada al Valle de los Reyes en Tebas"),
-        MuseumImage("ar8","ar8","Templo de Filae","Templo de Isis reflejado en las aguas del Nilo"),
-        MuseumImage("ar9","ar9","Esfinge de Hatshepsut","Esfinge colosal de la faraona Hatshepsut"),
-        MuseumImage("ar10","ar10","Estatua de Hatshepsut","Gran estatua arrodillada de Hatshepsut")
+        MuseumImage("ar1","ar1","Piramides de Giza","Las tres Grandes Piramides al atardecer"),
+        MuseumImage("ar2","ar2","Gran Esfinge","Esfinge de Giza con piramide de Khafre"),
+        MuseumImage("ar3","ar3","Valle de los Reyes","Entrada al Valle de los Reyes"),
+        MuseumImage("ar4","ar4","Templo de Filae","Templo de Isis en la isla de Filae"),
+        MuseumImage("ar5","ar5","Templo de Karnak","Sala Hipostila con columnas gigantes"),
+        MuseumImage("ar6","ar6","Abu Simbel","Colosos de Ramses II en Abu Simbel"),
+        MuseumImage("ar7","ar7","Templo de Luxor","Entrada del Templo de Luxor"),
+        MuseumImage("ar8","ar8","Piramide escalonada","Piramide de Zoser en Saqqara"),
+        MuseumImage("ar9","ar9","Obelisco de Hatshepsut","Obelisco en el Templo de Karnak"),
+        MuseumImage("ar10","ar10","Interior piramide","Pasillo dentro de la Gran Piramide")
     )
     private val arteImages = listOf(
-        MuseumImage("at1","at1","Esfinge de Senwosret detalle","Detalle del rostro de la esfinge de Senwosret III"),
-        MuseumImage("at2","at2","Pintura de Nefertari","Reina Nefertari en su tumba del Valle de las Reinas"),
-        MuseumImage("at3","at3","Busto de Nefertiti","Busto policromado de la reina Nefertiti"),
-        MuseumImage("at4","at4","Sarcofago de Tutankamon","Sarcofago interior dorado de Tutankamon"),
+        MuseumImage("at1","at1","Jeroglificos Hatshepsut","Jeroglificos tallados en templo de Hatshepsut"),
+        MuseumImage("at2","at2","Pintura de Nefertari","Reina Nefertari en su tumba"),
+        MuseumImage("at3","at3","Busto de Nefertiti","Famoso busto policromado de Nefertiti"),
+        MuseumImage("at4","at4","Sarcofago de Tutankamon","Sarcofago interior dorado"),
         MuseumImage("at5","at5","Libro de los Muertos","Papiro del Juicio de Osiris de Hunefer"),
-        MuseumImage("at6","at6","Esfinge de Amenhotep detalle","Detalle lateral de la esfinge de fayenza"),
-        MuseumImage("at7","at7","Anubis momificacion","Anubis atendiendo la momia de Sennedjem"),
-        MuseumImage("at8","at8","Esfinge guardian","Vista posterior de la esfinge de Senwosret III"),
-        MuseumImage("at9","at9","Relieve de Medinet Habu","Relieves de batalla del templo de Ramses III"),
-        MuseumImage("at10","at10","Esfinge de Hatshepsut perfil","Vista lateral de la esfinge de Hatshepsut")
+        MuseumImage("at6","at6","Collar ceremonial","Collar pectoral con halcon de Google Art"),
+        MuseumImage("at7","at7","Anubis momificacion","Anubis atendiendo momia de Sennedjem"),
+        MuseumImage("at8","at8","Nebamun cazando","Pintura de caza en los pantanos del Nilo"),
+        MuseumImage("at9","at9","Relieve Medinet Habu","Relieves de batalla de Ramses III"),
+        MuseumImage("at10","at10","Pintura tumba Tutankamon","Escena de la tumba de Tutankamon")
     )
 
-    // === URLS VERIFICADAS ===
-    // Met Museum IIIF API (mismo CDN que usa metmuseum.org, siempre funciona)
-    // Formato: collectionapi.metmuseum.org/api/collection/v1/iiif/{objectID}/{imageID}/main-image
-    // Met Museum web-additional (imagenes extra de alta calidad)
-    // Formato: images.metmuseum.org/CRDImages/eg/web-additional/{filename}.jpg
-    // Wikimedia Commons (fotos de monumentos, dominio publico)
+    // === TODAS LAS URLs SON WIKIMEDIA COMMONS (verificado que funcionan) ===
 
     val imageUrlsVidaCotidiana = listOf(
-        // Met IIIF - objetos de vida cotidiana del antiguo Egipto
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",   // Esfinge Senwosret III
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/DP247658.jpg",                   // Esfinge Senwosret detalle
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/DP248998.jpg",                   // Esfinge Senwosret lateral
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",   // Esfinge Hatshepsut
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106256/main-image",   // Esfinge Hatshepsut lateral
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/LC-17_9_2_EGDP026313.jpg",      // Senwosret frontal
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/LC-17_9_2_EGDP026312.jpg",      // Senwosret angulo
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/DP157707.jpg",                   // Senwosret primer plano
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/DP323880.jpg",                   // Senwosret detalle mane
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/DP323878.jpg"                    // Senwosret vista trasera
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Maler_der_Grabkammer_des_Nacht_001.jpg/640px-Maler_der_Grabkammer_des_Nacht_001.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tomb_of_Sennedjem_%281%29.jpg/640px-Tomb_of_Sennedjem_%281%29.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Egyptian_-_The_Seated_Scribe_-_Google_Art_Project.jpg/400px-Egyptian_-_The_Seated_Scribe_-_Google_Art_Project.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Maler_der_Grabkammer_des_Menna_008.jpg/640px-Maler_der_Grabkammer_des_Menna_008.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Maler_der_Grabkammer_des_Ipui_001.jpg/640px-Maler_der_Grabkammer_des_Ipui_001.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Fishing_scene%2C_Tomb_of_Menna.jpg/640px-Fishing_scene%2C_Tomb_of_Menna.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Egypte_lobread.jpg/480px-Egypte_lobread.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Gaming_Board_Inscribed_for_Amenhotep_III_MET_DP116866.jpg/640px-Gaming_Board_Inscribed_for_Amenhotep_III_MET_DP116866.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Edwin_Smith_Papyrus_v2.jpg/640px-Edwin_Smith_Papyrus_v2.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Egyptian_-_Pair_Statue_of_Nebsen_and_Nebet-Ta_-_Walters_2286.jpg/400px-Egyptian_-_Pair_Statue_of_Nebsen_and_Nebet-Ta_-_Walters_2286.jpg"
     )
 
     val imageUrlsArquitectura = listOf(
-        // Wikimedia - monumentos egipcios (fotos de exteriores, siempre disponibles)
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kheops-Pyramid.jpg/640px-Kheops-Pyramid.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Great_Sphinx_of_Giza_-_20080716a.jpg/640px-Great_Sphinx_of_Giza_-_20080716a.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ValleyOfTheKings_2007.jpg/640px-ValleyOfTheKings_2007.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Philae_Temple_R01.jpg/640px-Philae_Temple_R01.jpg",
-        // Met IIIF - esfinges y estatuas arquitectonicas
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106259/main-image",   // Hatshepsut esfinge angulo
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106260/main-image",   // Hatshepsut esfinge detalle
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106257/main-image",   // Hatshepsut esfinge superior
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106255/main-image",   // Hatshepsut esfinge cara
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1228544/main-image",   // Hatshepsut esfinge historica
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1228545/main-image"    // Hatshepsut esfinge excavacion
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/S_F-E-CAMERON_2006-10-EGYPT-KARNAK-0177.JPG/640px-S_F-E-CAMERON_2006-10-EGYPT-KARNAK-0177.JPG",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Abu_Simbel%2C_Ramesses_Temple%2C_front%2C_Egypt%2C_Oct_2004.jpg/640px-Abu_Simbel%2C_Ramesses_Temple%2C_front%2C_Egypt%2C_Oct_2004.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Luxor_Temple_R03.jpg/640px-Luxor_Temple_R03.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Saqqara_BW_5.jpg/640px-Saqqara_BW_5.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Obelisk_of_Hatshepsut.jpg/320px-Obelisk_of_Hatshepsut.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Great_Pyramid_Passages.jpg/400px-Great_Pyramid_Passages.jpg"
     )
 
     val imageUrlsArte = listOf(
-        // Met IIIF + web-additional - arte egipcio
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/LC-17_9_2_EGDP026315.jpg",      // Senwosret escultura detalle
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Egyptian_hieroglyphs_at_Hatshepsut_temple.jpg/640px-Egyptian_hieroglyphs_at_Hatshepsut_temple.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Maler_der_Grabkammer_der_Nefertari_001.jpg/480px-Maler_der_Grabkammer_der_Nefertari_001.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Nofretete_Neues_Museum.jpg/360px-Nofretete_Neues_Museum.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Innerster_Sarg_des_Tutanchamun.jpg/320px-Innerster_Sarg_des_Tutanchamun.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Book_of_the_Dead_of_Hunefer_sheet_3.jpg/640px-Book_of_the_Dead_of_Hunefer_sheet_3.jpg",
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/LC-17_9_2_EGDP026314.jpg",      // Senwosret arte detalle
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Egyptian_-_Broad_Collar_-_Google_Art_Project.jpg/600px-Egyptian_-_Broad_Collar_-_Google_Art_Project.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Anubis_attending_the_mummy_of_Sennedjem.jpg/480px-Anubis_attending_the_mummy_of_Sennedjem.jpg",
-        "https://images.metmuseum.org/CRDImages/eg/web-additional/LC-17_9_2_EGDP026316.jpg",      // Senwosret arte angulo
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Nebamun_Hunting_in_the_Marshes%2C_British_Museum.jpg/640px-Nebamun_Hunting_in_the_Marshes%2C_British_Museum.jpg",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Medinet_Habu_Ramses_III._Tempel_30.jpg/640px-Medinet_Habu_Ramses_III._Tempel_30.jpg",
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/1151968/main-image"    // Hatshepsut esfinge restaurada
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Tomb_of_Tutankhamun_%28KV62%29%2C_Wall_painting%2C_Valley_of_the_Kings%2C_Egypt.jpg/640px-Tomb_of_Tutankhamun_%28KV62%29%2C_Wall_painting%2C_Valley_of_the_Kings%2C_Egypt.jpg"
     )
 
     private val vidaCotidianaAudios = listOf(
-        AudioItem("vc_aud_1","Sonidos del mercado","vc_mercado",AudioType.AMBIENT,"Ambiente de mercado egipcio"),
-        AudioItem("vc_aud_2","Vida junto al Nilo","vc_nilo_narracion",AudioType.NARRATION,"Narracion sobre vida diaria"),
-        AudioItem("vc_aud_3","Arpa egipcia","vc_arpa_egipcia",AudioType.MUSIC,"Melodia de arpa egipcia"),
-        AudioItem("vc_aud_4","Cantos de trabajo","vc_cantos_trabajo",AudioType.AMBIENT,"Canticos de trabajadores"),
-        AudioItem("vc_aud_5","Cocina del faraon","vc_cocina_narracion",AudioType.NARRATION,"Gastronomia de la corte")
+        AudioItem("vc_aud_1","Sonidos del mercado","vc_mercado",AudioType.AMBIENT,"Ambiente de mercado"),
+        AudioItem("vc_aud_2","Vida junto al Nilo","vc_nilo_narracion",AudioType.NARRATION,"Vida diaria"),
+        AudioItem("vc_aud_3","Arpa egipcia","vc_arpa_egipcia",AudioType.MUSIC,"Melodia de arpa"),
+        AudioItem("vc_aud_4","Cantos de trabajo","vc_cantos_trabajo",AudioType.AMBIENT,"Canticos"),
+        AudioItem("vc_aud_5","Cocina del faraon","vc_cocina_narracion",AudioType.NARRATION,"Gastronomia")
     )
     private val arquitecturaAudios = listOf(
-        AudioItem("arq_aud_1","Ecos en la Piramide","arq_ecos_piramide",AudioType.AMBIENT,"Ecos dentro de la piramide"),
-        AudioItem("arq_aud_2","Construccion","arq_construccion_narracion",AudioType.NARRATION,"Tecnicas de construccion"),
-        AudioItem("arq_aud_3","Himnos de Karnak","arq_himnos_karnak",AudioType.MUSIC,"Himnos ceremoniales"),
-        AudioItem("arq_aud_4","Viento del desierto","arq_viento_desierto",AudioType.AMBIENT,"Viento del Sahara"),
-        AudioItem("arq_aud_5","Secretos de la Esfinge","arq_esfinge_narracion",AudioType.NARRATION,"Misterios de la Esfinge")
+        AudioItem("arq_aud_1","Ecos en la Piramide","arq_ecos_piramide",AudioType.AMBIENT,"Ecos"),
+        AudioItem("arq_aud_2","Construccion","arq_construccion_narracion",AudioType.NARRATION,"Tecnicas"),
+        AudioItem("arq_aud_3","Himnos de Karnak","arq_himnos_karnak",AudioType.MUSIC,"Himnos"),
+        AudioItem("arq_aud_4","Viento del desierto","arq_viento_desierto",AudioType.AMBIENT,"Viento"),
+        AudioItem("arq_aud_5","Secretos Esfinge","arq_esfinge_narracion",AudioType.NARRATION,"Misterios")
     )
     private val arteAudios = listOf(
-        AudioItem("art_aud_1","Taller del escultor","art_taller_escultor",AudioType.AMBIENT,"Cincel sobre piedra"),
-        AudioItem("art_aud_2","Jeroglificos","art_jeroglificos_narracion",AudioType.NARRATION,"Escritura jeroglifica"),
-        AudioItem("art_aud_3","Musica de Osiris","art_musica_osiris",AudioType.MUSIC,"Musica funeraria"),
-        AudioItem("art_aud_4","Pigmentos","art_pigmentos",AudioType.AMBIENT,"Preparacion de pigmentos"),
-        AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"La mascara dorada")
+        AudioItem("art_aud_1","Taller escultor","art_taller_escultor",AudioType.AMBIENT,"Cincel"),
+        AudioItem("art_aud_2","Jeroglificos","art_jeroglificos_narracion",AudioType.NARRATION,"Escritura"),
+        AudioItem("art_aud_3","Musica Osiris","art_musica_osiris",AudioType.MUSIC,"Ritual"),
+        AudioItem("art_aud_4","Pigmentos","art_pigmentos",AudioType.AMBIENT,"Preparacion"),
+        AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"Mascara")
     )
 
     private const val HLS_TEARS = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
@@ -119,25 +110,25 @@ object MuseumRepository {
     private const val HLS_BLENDER = "https://ireplay.tv/test/blender.m3u8"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1","Un dia en el Antiguo Egipto",HLS_TEARS,"Recrea un dia tipico"),
-        VideoItem("vc_vid_2","Alimentacion egipcia",HLS_APPLE,"Alimentos y culinaria"),
-        VideoItem("vc_vid_3","Fiestas egipcias",HLS_AKAMAI,"Festividades del calendario"),
-        VideoItem("vc_vid_4","Rol de la mujer",HLS_BLENDER,"La mujer en Egipto"),
-        VideoItem("vc_vid_5","Oficios egipcios",HLS_TEARS,"Escribas, artesanos, medicos")
+        VideoItem("vc_vid_1","Un dia en Egipto",HLS_TEARS,"Vida de un artesano"),
+        VideoItem("vc_vid_2","Alimentacion",HLS_APPLE,"Culinaria egipcia"),
+        VideoItem("vc_vid_3","Fiestas",HLS_AKAMAI,"Festividades"),
+        VideoItem("vc_vid_4","Rol de la mujer",HLS_BLENDER,"Sociedad egipcia"),
+        VideoItem("vc_vid_5","Oficios",HLS_TEARS,"Escribas y artesanos")
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1","Piramides",HLS_TEARS,"Construccion de piramides"),
-        VideoItem("arq_vid_2","Templos del Nilo",HLS_APPLE,"Recorrido por templos"),
-        VideoItem("arq_vid_3","Ingenieria",HLS_AKAMAI,"Innovaciones tecnicas"),
-        VideoItem("arq_vid_4","Abu Simbel",HLS_BLENDER,"Traslado del templo"),
-        VideoItem("arq_vid_5","Tutankamon",HLS_TEARS,"Descubrimiento de Carter")
+        VideoItem("arq_vid_1","Piramides",HLS_TEARS,"Construccion"),
+        VideoItem("arq_vid_2","Templos",HLS_APPLE,"Recorrido"),
+        VideoItem("arq_vid_3","Ingenieria",HLS_AKAMAI,"Innovaciones"),
+        VideoItem("arq_vid_4","Abu Simbel",HLS_BLENDER,"Traslado"),
+        VideoItem("arq_vid_5","Tutankamon",HLS_TEARS,"Descubrimiento")
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1","Jeroglificos",HLS_TEARS,"Champollion y Rosetta"),
-        VideoItem("art_vid_2","Colores de Egipto",HLS_APPLE,"Pigmentos y murales"),
-        VideoItem("art_vid_3","Tesoros",HLS_AKAMAI,"Joyas de la tumba"),
+        VideoItem("art_vid_1","Jeroglificos",HLS_TEARS,"Piedra Rosetta"),
+        VideoItem("art_vid_2","Colores",HLS_APPLE,"Pigmentos"),
+        VideoItem("art_vid_3","Tesoros",HLS_AKAMAI,"Tumba"),
         VideoItem("art_vid_4","Momificacion",HLS_BLENDER,"Proceso ritual"),
-        VideoItem("art_vid_5","Escultura",HLS_TEARS,"Colosos y bustos")
+        VideoItem("art_vid_5","Escultura",HLS_TEARS,"Colosos")
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
