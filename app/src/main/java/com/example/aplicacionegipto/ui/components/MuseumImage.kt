@@ -7,6 +7,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -16,25 +17,45 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.ImageLoader
 import coil.compose.SubcomposeAsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.example.aplicacionegipto.ui.theme.*
 import okhttp3.OkHttpClient
-import coil.ImageLoader
+import java.util.concurrent.TimeUnit
 
 /**
- * Componente de imagen con Coil + OkHttp configurado.
- *
- * El Met IIIF API hace redirects (302) a la imagen final.
- * Coil por defecto usa OkHttp que sigue redirects, pero
- * necesitamos:
- * 1. User-Agent valido (sin el, algunos CDN rechazan)
- * 2. followRedirects = true (para IIIF -> imagen final)
- * 3. memoryCachePolicy ENABLED (cache agresivo)
- * 4. diskCachePolicy ENABLED (no re-descargar)
- * 5. networkCachePolicy ENABLED
+ * ImageLoader singleton para toda la app.
+ * Configurado con OkHttp que sigue redirects del Met IIIF API.
  */
+private var _imageLoader: ImageLoader? = null
+
+private fun getImageLoader(context: android.content.Context): ImageLoader {
+    if (_imageLoader == null) {
+        val client = OkHttpClient.Builder()
+            .followRedirects(true)
+            .followSslRedirects(true)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor { chain ->
+                val req = chain.request().newBuilder()
+                    .header("User-Agent", "MuseoEgiptoApp/1.0 (Android; educational)")
+                    .header("Accept", "image/*,*/*")
+                    .build()
+                chain.proceed(req)
+            }
+            .build()
+
+        _imageLoader = ImageLoader.Builder(context.applicationContext)
+            .okHttpClient(client)
+            .crossfade(true)
+            .respectCacheHeaders(false)
+            .build()
+    }
+    return _imageLoader!!
+}
+
 @Composable
 fun MuseumAsyncImage(
     imageUrl: String,
@@ -43,25 +64,7 @@ fun MuseumAsyncImage(
     contentScale: ContentScale = ContentScale.Crop
 ) {
     val context = LocalContext.current
-
-    // OkHttpClient con User-Agent y redirects
-    val okHttpClient = OkHttpClient.Builder()
-        .followRedirects(true)
-        .followSslRedirects(true)
-        .addInterceptor { chain ->
-            val request = chain.request().newBuilder()
-                .header("User-Agent", "MuseoEgiptoApp/1.0 (Android; educational)")
-                .header("Accept", "image/*")
-                .build()
-            chain.proceed(request)
-        }
-        .build()
-
-    // ImageLoader personalizado con OkHttp
-    val imageLoader = ImageLoader.Builder(context)
-        .okHttpClient(okHttpClient)
-        .crossfade(true)
-        .build()
+    val loader = remember { getImageLoader(context) }
 
     SubcomposeAsyncImage(
         model = ImageRequest.Builder(context)
@@ -70,23 +73,22 @@ fun MuseumAsyncImage(
             .allowHardware(false)
             .memoryCachePolicy(CachePolicy.ENABLED)
             .diskCachePolicy(CachePolicy.ENABLED)
-            .networkCachePolicy(CachePolicy.ENABLED)
             .listener(
                 onError = { _, result ->
-                    Log.e("MuseumImage", "Error cargando: $imageUrl -> ${result.throwable.message}")
+                    Log.e("MuseumImg", "FAIL: $imageUrl | ${result.throwable.message}")
                 },
                 onSuccess = { _, _ ->
-                    Log.d("MuseumImage", "OK: $imageUrl")
+                    Log.d("MuseumImg", "OK: $imageUrl")
                 }
             )
             .build(),
-        imageLoader = imageLoader,
+        imageLoader = loader,
         contentDescription = description,
         contentScale = contentScale,
         modifier = modifier.semantics { contentDescription = description },
         loading = {
             Box(
-                modifier = Modifier.fillMaxSize().background(
+                Modifier.fillMaxSize().background(
                     Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.2f), LapisLazuli.copy(alpha = 0.15f)))
                 ),
                 contentAlignment = Alignment.Center
@@ -96,19 +98,15 @@ fun MuseumAsyncImage(
         },
         error = {
             Box(
-                modifier = Modifier.fillMaxSize().background(
+                Modifier.fillMaxSize().background(
                     Brush.verticalGradient(listOf(GoldDark.copy(alpha = 0.3f), LapisLazuli.copy(alpha = 0.2f)))
                 ),
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "E", fontSize = 28.sp)
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Imagen no disponible",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
-                    )
+                    Spacer(Modifier.height(4.dp))
+                    Text("Imagen no disponible", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
                 }
             }
         }
