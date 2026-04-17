@@ -4,23 +4,21 @@ import com.example.aplicacionegipto.model.*
 
 object MuseumRepository {
 
-    // === VIDA COTIDIANA: imagenes que corresponden a cada articulo ===
-    // Art.1 Alimentacion y cocina | Art.2 Vestimenta y joyeria | Art.3 Familia
-    // Art.4 Juegos y entretenimiento | Art.5 Medicina y salud
+    // === VIDA COTIDIANA ===
     private val vidaCotidianaImages = listOf(
-        MuseumImage("vc1","vc1","Panaderia y cerveceria","Modelo de panaderia y cerveceria de la tumba de Meketre"),
+        MuseumImage("vc1","vc1","Panaderia y cerveceria","Modelo de taller de pan y cerveza de la tumba de Meketre"),
         MuseumImage("vc2","vc2","Barco de cocina","Barco con cocineros preparando pan y cerveza para el viaje"),
         MuseumImage("vc3","vc3","Collar menat ceremonial","Collar menat de fayenza usado en ceremonias religiosas"),
         MuseumImage("vc4","vc4","Silla de Hatnefer","Silla de madera del ajuar domestico de una noble egipcia"),
-        MuseumImage("vc5","vc5","Portadora de ofrendas","Figura femenina portando canasta con pan y patos"),
-        MuseumImage("vc6","vc6","Familia en procesion","Procesion funeraria con hijos de Meketre portando ofrendas"),
-        MuseumImage("vc7","vc7","Hipopotamo William","Figurilla de fayenza azul con lotos, amuleto protector"),
-        MuseumImage("vc8","vc8","Barco deportivo","Modelo de barco para caza y pesca en los pantanos del Nilo"),
+        MuseumImage("vc5","vc5","Portadora de ofrendas","Figura femenina portando canasta con pan y patos para el difunto"),
+        MuseumImage("vc6","vc6","Procesion funeraria","Hijos de Meketre portando ofrendas para el entierro de su padre"),
+        MuseumImage("vc7","vc7","Juego Hounds and Jackals","Tablero de juego de marfil y ebano encontrado en tumba real"),
+        MuseumImage("vc8","vc8","Hipopotamo William","Figurilla de fayenza azul decorada con lotos del Nilo"),
         MuseumImage("vc9","vc9","Granero con escribas","Modelo de granero con escribas contando y midiendo grano"),
         MuseumImage("vc10","vc10","Shabti funerario","Figurilla ushabti que servia al difunto en el mas alla")
     )
 
-    // === ARQUITECTURA: templos, piramides, esfinges, tumbas, obeliscos ===
+    // === ARQUITECTURA ===
     private val arquitecturaImages = listOf(
         MuseumImage("ar1","ar1","Templo de Dendur","Templo egipcio completo reconstruido en el Metropolitan Museum"),
         MuseumImage("ar2","ar2","Estatua Rey Menkaure","Estatua sedente del constructor de la tercera piramide de Giza"),
@@ -30,64 +28,78 @@ object MuseumRepository {
         MuseumImage("ar6","ar6","Esfinge de Amenhotep III","Esfinge unica de fayenza azul con manos humanas"),
         MuseumImage("ar7","ar7","Sarcofago de Harkhebit","Sarcofago monumental de un alto oficial de la Dinastia 26"),
         MuseumImage("ar8","ar8","Sarcofago de Khnumhotep","Sarcofago del Reino Medio con ojos wedjat pintados"),
-        MuseumImage("ar9","ar9","Hatshepsut arrodillada","Gran estatua de Hatshepsut ofreciendo a los dioses"),
+        MuseumImage("ar9","ar9","Hatshepsut arrodillada","Gran estatua de Hatshepsut ofreciendo vasijas a los dioses"),
         MuseumImage("ar10","ar10","Hatshepsut sentada","Estatua de la faraona con atributos reales completos")
     )
 
-    // === ARTE: escultura, mascaras, joyas, sarcofagos pintados, escarabajos ===
+    // === ARTE ===
     private val arteImages = listOf(
-        MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat tallado con jeroglificos"),
-        MuseumImage("at2","at2","Portadora de ofrendas pintada","Figura de madera pintada con colores originales vibrantes"),
-        MuseumImage("at3","at3","Esfinge Senwosret escultura","Obra maestra de escultura del Reino Medio en gneis"),
-        MuseumImage("at4","at4","Mascara funeraria dorada","Mascara de oro de Hatnefer con ojos de obsidiana"),
-        MuseumImage("at5","at5","Sarcofago pintado Henettawy","Sarcofago con pinturas elaboradas de la cantora de Amun"),
+        MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat con jeroglificos tallados en piedra"),
+        MuseumImage("at2","at2","Pintura mural del gato","Pintura de gato matando serpiente de la tumba de Sennedjem"),
+        MuseumImage("at3","at3","Gansos de Meidum","Famosa pintura mural de gansos del Reino Antiguo de Meidum"),
+        MuseumImage("at4","at4","Mascara funeraria dorada","Mascara de oro de Hatnefer con ojos de obsidiana y alabastro"),
+        MuseumImage("at5","at5","Sarcofago pintado Henettawy","Sarcofago con pinturas elaboradas de la cantora de Amun-Ra"),
         MuseumImage("at6","at6","Sarcofago decorado Ukhhotep","Sarcofago del tesorero real con escenas del Mas Alla"),
-        MuseumImage("at7","at7","Escarabajo corazon de oro","Escarabajo con hechizo del Libro de los Muertos"),
-        MuseumImage("at8","at8","Hatshepsut como faraona","Estatua que muestra a Hatshepsut con vestimenta femenina"),
-        MuseumImage("at9","at9","Sarcofago Khnumhotep pintado","Sarcofago con jeroglificos y decoracion funeraria"),
-        MuseumImage("at10","at10","Mujer nubia","Figura femenina de Nubia mostrando la diversidad del imperio")
+        MuseumImage("at7","at7","Escarabajo corazon de oro","Escarabajo de Hatnefer con hechizo del Libro de los Muertos"),
+        MuseumImage("at8","at8","Esfinge Senwosret III","Obra maestra de escultura del Reino Medio tallada en gneis"),
+        MuseumImage("at9","at9","Sarcofago Khnumhotep","Sarcofago decorado con jeroglificos y ojos wedjat"),
+        MuseumImage("at10","at10","Mujer nubia","Figura femenina de Nubia mostrando la diversidad cultural")
     )
 
-    // === URLs IIIF verificadas (extraidas con Chrome de metmuseum.org) ===
-    // Cada imagen corresponde tematicamente a los articulos de su seccion
+    // === URLs IIIF del Met Museum (imageIDs extraidos de metmuseum.org) ===
+    // Organizadas para corresponder a los 5 articulos de cada seccion
 
     val imageUrlsVidaCotidiana = listOf(
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544258/1178720/main-image",  // Panaderia/cerveceria Meketre -> Art.1 Alimentacion
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544212/1220804/main-image",  // Barco cocina Meketre -> Art.1 Alimentacion
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544509/1210644/main-image",  // Collar menat -> Art.2 Vestimenta/joyeria
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543868/1172779/main-image",  // Silla Hatnefer -> Art.2 Vestimenta (ajuar)
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544210/1216908/main-image",  // Portadora ofrendas -> Art.3 Familia
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544125/1428405/main-image",  // Procesion funeraria -> Art.3 Familia
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544227/1216904/main-image",  // Hipopotamo William -> Art.4 Juegos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544126/1428412/main-image",  // Barco deportivo -> Art.4 Entretenimiento
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545281/1467010/main-image",  // Granero con escribas -> Art.5 Medicina/salud
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544340/1450850/main-image"   // Shabti -> Art.5 Salud/mas alla
+        // Art.1 Alimentacion y cocina
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544258/1178720/main-image",  // Panaderia/cerveceria Meketre
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544212/1220804/main-image",  // Barco cocina Meketre
+        // Art.2 Vestimenta y joyeria
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544509/1210644/main-image",  // Collar menat
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543868/1172779/main-image",  // Silla Hatnefer (ajuar)
+        // Art.3 La familia egipcia
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544210/1216908/main-image",  // Portadora ofrendas
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544125/1428405/main-image",  // Procesion funeraria familiar
+        // Art.4 Juegos y entretenimiento
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543867/1221835/main-image",  // Juego Hounds & Jackals
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544227/1216904/main-image",  // Hipopotamo William
+        // Art.5 Medicina y salud
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545281/1467010/main-image",  // Granero escribas
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544340/1450850/main-image"   // Shabti
     )
 
     val imageUrlsArquitectura = listOf(
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",  // Templo Dendur -> Art.1 Piramides/templos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",  // Rey Menkaure -> Art.1 Piramides
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543910/1172813/main-image",  // Pedestal Khafre -> Art.1 Piramides
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Esfinge Hatshepsut -> Art.3 Esfinge
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret -> Art.3 Esfinge
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Esfinge Amenhotep -> Art.3 Esfinge
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548211/1220671/main-image",  // Sarcofago Harkhebit -> Art.4 Valle Reyes
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image",  // Sarcofago Khnumhotep -> Art.4 Valle Reyes
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",  // Hatshepsut arrodillada -> Art.5 Obeliscos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544450/2105723/main-image"   // Hatshepsut sentada -> Art.5 Obeliscos
+        // Art.1 Las Grandes Piramides
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",  // Templo Dendur
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",  // Rey Menkaure
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543910/1172813/main-image",  // Pedestal Khafre
+        // Art.3 La Gran Esfinge
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Esfinge Hatshepsut
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Esfinge Amenhotep
+        // Art.4 Valle de los Reyes
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548211/1220671/main-image",  // Sarcofago Harkhebit
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image",  // Sarcofago Khnumhotep
+        // Art.5 Obeliscos
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",  // Hatshepsut arrodillada
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544450/2105723/main-image"   // Hatshepsut sentada
     )
 
     val imageUrlsArte = listOf(
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544166/1369337/main-image",  // Santuario jeroglificos -> Art.1 Jeroglificos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544210/1216908/main-image",  // Portadora pintada -> Art.2 Pintura
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret -> Art.3 Escultura
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Mascara Hatnefer -> Art.4 Mascara
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",  // Sarcofago Henettawy -> Art.5 Funerario
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546303/1212836/main-image",  // Sarcofago Ukhhotep -> Art.5 Funerario
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545146/1223831/main-image",  // Escarabajo corazon -> Art.4 Mascara/joyas
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544849/1151822/main-image",  // Hatshepsut faraona -> Art.3 Escultura
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image",  // Sarcofago pintado -> Art.5 Funerario
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544218/1297278/main-image"   // Mujer nubia -> Art.2 Pintura
+        // Art.1 Jeroglificos
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544166/1369337/main-image",  // Santuario jeroglificos
+        // Art.2 Pintura mural
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548564/2311333/main-image",  // Pintura gato mata serpiente
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544531/1190294/main-image",  // Gansos de Meidum
+        // Art.3 Escultura (placeholder - misma que Art.4)
+        // Art.4 Mascara de Tutankamon
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Mascara Hatnefer
+        // Art.5 Arte funerario
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",  // Sarcofago Henettawy
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546303/1212836/main-image",  // Sarcofago Ukhhotep
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545146/1223831/main-image",  // Escarabajo corazon
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret (escultura)
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image",  // Sarcofago Khnumhotep
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544218/1297278/main-image"   // Mujer nubia
     )
 
     private val vidaCotidianaAudios = listOf(
