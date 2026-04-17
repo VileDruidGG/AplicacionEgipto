@@ -8,14 +8,14 @@ object MuseumRepository {
     private val vidaCotidianaImages = listOf(
         MuseumImage("vc1","vc1","Panaderia y cerveceria","Modelo de taller de pan y cerveza de la tumba de Meketre"),
         MuseumImage("vc2","vc2","Barco de cocina","Barco con cocineros preparando pan y cerveza para el viaje"),
-        MuseumImage("vc3","vc3","Collar menat ceremonial","Collar menat de fayenza usado en ceremonias religiosas"),
-        MuseumImage("vc4","vc4","Silla de Hatnefer","Silla de madera del ajuar domestico de una noble egipcia"),
-        MuseumImage("vc5","vc5","Portadora de ofrendas","Figura femenina portando canasta con pan y patos para el difunto"),
-        MuseumImage("vc6","vc6","Procesion funeraria","Hijos de Meketre portando ofrendas para el entierro de su padre"),
+        MuseumImage("vc3","vc3","Estatuilla de Lady Tiye","Mujer noble egipcia con vestido de lino y peluca elaborada"),
+        MuseumImage("vc4","vc4","Pectoral de Sithathoryunet","Pectoral de oro y piedras semipreciosas de una princesa real"),
+        MuseumImage("vc5","vc5","Nikare con esposa e hija","Grupo familiar egipcio: padre, madre e hija juntos"),
+        MuseumImage("vc6","vc6","Yuny y su esposa Renenutet","Pareja egipcia abrazada, simbolo de amor conyugal"),
         MuseumImage("vc7","vc7","Juego Hounds and Jackals","Tablero de juego de marfil y ebano encontrado en tumba real"),
-        MuseumImage("vc8","vc8","Hipopotamo William","Figurilla de fayenza azul decorada con lotos del Nilo"),
-        MuseumImage("vc9","vc9","Granero con escribas","Modelo de granero con escribas contando y midiendo grano"),
-        MuseumImage("vc10","vc10","Shabti funerario","Figurilla ushabti que servia al difunto en el mas alla")
+        MuseumImage("vc8","vc8","Caja cosmetica con tapa","Caja de cosmeticos con tapa giratoria para maquillaje y unguentos"),
+        MuseumImage("vc9","vc9","Estela magica de Horus","Estela con Horus nino para proteccion magica contra enfermedades"),
+        MuseumImage("vc10","vc10","Isis con Horus bebe","Diosa Isis amamantando a Horus, simbolo de proteccion maternal")
     )
 
     // === ARQUITECTURA ===
@@ -46,24 +46,24 @@ object MuseumRepository {
         MuseumImage("at10","at10","Mujer nubia","Figura femenina de Nubia mostrando la diversidad cultural")
     )
 
-    // === URLs IIIF del Met Museum (imageIDs extraidos de metmuseum.org) ===
+    // === URLs IIIF del Met Museum (imageIDs extraidos con Chrome MCP de metmuseum.org) ===
 
     val imageUrlsVidaCotidiana = listOf(
         // Art.1 Alimentacion y cocina
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544258/1178720/main-image",  // Panaderia/cerveceria Meketre
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544212/1220804/main-image",  // Barco cocina Meketre
         // Art.2 Vestimenta y joyeria
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544509/1210644/main-image",  // Collar menat
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543868/1172779/main-image",  // Silla Hatnefer (ajuar)
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544524/1793037/main-image",  // Lady Tiye con vestido y peluca
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544232/1151819/main-image",  // Pectoral joya princesa Sithathoryunet
         // Art.3 La familia egipcia
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544210/1216908/main-image",  // Portadora ofrendas
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544125/1428405/main-image",  // Procesion funeraria familiar
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543901/1214210/main-image",  // Nikare con esposa e hija
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544740/1151839/main-image",  // Yuny y esposa Renenutet
         // Art.4 Juegos y entretenimiento
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543867/1221835/main-image",  // Juego Hounds & Jackals
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544227/1216904/main-image",  // Hipopotamo William
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547031/1084353/main-image",  // Caja cosmetica con tapa giratoria
         // Art.5 Medicina y salud
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545281/1467010/main-image",  // Granero escribas
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544340/1450850/main-image"   // Shabti
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546037/2306456/main-image",  // Estela magica Horus nino
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548310/1214471/main-image"   // Isis con Horus bebe
     )
 
     val imageUrlsArquitectura = listOf(
