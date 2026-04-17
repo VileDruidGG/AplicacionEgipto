@@ -36,7 +36,7 @@ object MuseumRepository {
     private val arteImages = listOf(
         MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat con jeroglificos tallados en piedra"),
         MuseumImage("at2","at2","Pintura mural del gato","Pintura de gato matando serpiente de la tumba de Sennedjem"),
-        MuseumImage("at3","at3","Gansos de Meidum","Famosa pintura mural de gansos del Reino Antiguo de Meidum"),
+        MuseumImage("at3","at3","Hatshepsut como faraona","Escultura de Hatshepsut con vestimenta femenina y corona real"),
         MuseumImage("at4","at4","Mascara funeraria dorada","Mascara de oro de Hatnefer con ojos de obsidiana y alabastro"),
         MuseumImage("at5","at5","Sarcofago pintado Henettawy","Sarcofago con pinturas elaboradas de la cantora de Amun-Ra"),
         MuseumImage("at6","at6","Sarcofago decorado Ukhhotep","Sarcofago del tesorero real con escenas del Mas Alla"),
@@ -47,7 +47,6 @@ object MuseumRepository {
     )
 
     // === URLs IIIF del Met Museum (imageIDs extraidos de metmuseum.org) ===
-    // Organizadas para corresponder a los 5 articulos de cada seccion
 
     val imageUrlsVidaCotidiana = listOf(
         // Art.1 Alimentacion y cocina
@@ -89,8 +88,8 @@ object MuseumRepository {
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544166/1369337/main-image",  // Santuario jeroglificos
         // Art.2 Pintura mural
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548564/2311333/main-image",  // Pintura gato mata serpiente
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544531/1190294/main-image",  // Gansos de Meidum
-        // Art.3 Escultura (placeholder - misma que Art.4)
+        // Art.3 Escultura
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544849/1151822/main-image",  // Hatshepsut escultura
         // Art.4 Mascara de Tutankamon
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Mascara Hatnefer
         // Art.5 Arte funerario
