@@ -5,9 +5,8 @@ import com.example.aplicacionegipto.model.*
 object MuseumRepository {
 
     // === VIDA COTIDIANA ===
-    // Orden: [0-1] Art.1 Alimentacion, [2-3] Art.2 Vestimenta, [4-5] Art.3 Familia,
-    //        [6-7] Art.4 Juegos, [8-9] Art.5 Medicina
-    // Posiciones 0,2,4,6,8 = imagen principal de cada articulo
+    // [0] Art.1 Alimentacion | [1] Art.2 Vestimenta | [2] Art.3 Familia
+    // [3] Art.4 Juegos | [4] Art.5 Medicina | [5-9] Galeria
     private val vidaCotidianaImages = listOf(
         MuseumImage("vc1","vc1","Panaderia y cerveceria","Modelo de taller de pan y cerveza de la tumba de Meketre"),
         MuseumImage("vc2","vc2","Estatuilla de Lady Tiye","Mujer noble egipcia con vestido de lino y peluca elaborada"),
@@ -22,24 +21,24 @@ object MuseumRepository {
     )
 
     // === ARQUITECTURA ===
-    // Orden: [0-1] Art.1 Piramides, [2-3] Art.2 Templos, [4-5] Art.3 Esfinge,
-    //        [6-7] Art.4 Valle Reyes, [8-9] Art.5 Obeliscos
+    // [0] Art.1 Piramides | [1] Art.2 Templos | [2] Art.3 Esfinge
+    // [3] Art.4 Valle Reyes | [4] Art.5 Obeliscos | [5-9] Galeria
     private val arquitecturaImages = listOf(
-        MuseumImage("ar1","ar1","Templo de Dendur","Templo egipcio completo reconstruido en el Metropolitan Museum"),
-        MuseumImage("ar2","ar2","Estatua Rey Menkaure","Estatua sedente del constructor de la tercera piramide de Giza"),
-        MuseumImage("ar3","ar3","Pedestal del Rey Khafre","Soporte con nombre del constructor de la segunda piramide"),
-        MuseumImage("ar4","ar4","Esfinge de Hatshepsut","Esfinge colosal de granito de la faraona Hatshepsut"),
-        MuseumImage("ar5","ar5","Esfinge de Senwosret III","Esfinge de gneis del Reino Medio con rasgos realistas"),
-        MuseumImage("ar6","ar6","Esfinge de Amenhotep III","Esfinge unica de fayenza azul con manos humanas"),
-        MuseumImage("ar7","ar7","Sarcofago de Harkhebit","Sarcofago monumental de un alto oficial de la Dinastia 26"),
-        MuseumImage("ar8","ar8","Sarcofago de Khnumhotep","Sarcofago del Reino Medio con ojos wedjat pintados"),
-        MuseumImage("ar9","ar9","Hatshepsut arrodillada","Gran estatua de Hatshepsut ofreciendo vasijas a los dioses"),
-        MuseumImage("ar10","ar10","Hatshepsut sentada","Estatua de la faraona con atributos reales completos")
+        MuseumImage("ar1","ar1","Mastaba de Perneb","Tumba mastaba de piedra caliza del administrador Perneb en Saqqara"),
+        MuseumImage("ar2","ar2","Templo de Dendur","Templo egipcio completo reconstruido en el Metropolitan Museum"),
+        MuseumImage("ar3","ar3","Esfinge de Hatshepsut","Esfinge colosal de granito de la faraona Hatshepsut"),
+        MuseumImage("ar4","ar4","Sarcofago de Harkhebit","Sarcofago monumental de un alto oficial encontrado en Saqqara"),
+        MuseumImage("ar5","ar5","Hatshepsut arrodillada","Gran estatua de Hatshepsut que mando construir obeliscos en Karnak"),
+        MuseumImage("ar6","ar6","Estatua Rey Menkaure","Estatua sedente del constructor de la tercera piramide de Giza"),
+        MuseumImage("ar7","ar7","Pedestal del Rey Khafre","Soporte con nombre del constructor de la segunda piramide"),
+        MuseumImage("ar8","ar8","Esfinge de Senwosret III","Esfinge de gneis del Reino Medio con rasgos realistas"),
+        MuseumImage("ar9","ar9","Esfinge de Amenhotep III","Esfinge unica de fayenza azul con manos humanas"),
+        MuseumImage("ar10","ar10","Sarcofago de Khnumhotep","Sarcofago del Reino Medio con ojos wedjat pintados")
     )
 
     // === ARTE ===
-    // Orden: [0-1] Art.1 Jeroglificos, [2-3] Art.2 Pintura, [4-5] Art.3 Escultura,
-    //        [6-7] Art.4 Mascara, [8-9] Art.5 Funerario
+    // [0] Art.1 Jeroglificos | [1] Art.2 Pintura | [2] Art.3 Escultura
+    // [3] Art.4 Mascara | [4] Art.5 Funerario | [5-9] Galeria
     private val arteImages = listOf(
         MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat con jeroglificos tallados en piedra"),
         MuseumImage("at2","at2","Pintura mural del gato","Pintura de gato matando serpiente de la tumba de Sennedjem"),
@@ -53,9 +52,7 @@ object MuseumRepository {
         MuseumImage("at10","at10","Sarcofago Khnumhotep","Sarcofago decorado con jeroglificos y ojos wedjat")
     )
 
-    // === URLs IIIF - REORDENADAS para coincidir con articulos ===
-    // Posicion [0] = imagen del articulo 1, [1] = articulo 2, etc.
-    // Posiciones [5-9] = imagenes extra para la galeria
+    // === URLs IIIF del Met Museum ===
 
     val imageUrlsVidaCotidiana = listOf(
         // [0] Art.1 Alimentacion y cocina
@@ -78,21 +75,21 @@ object MuseumRepository {
 
     val imageUrlsArquitectura = listOf(
         // [0] Art.1 Las Grandes Piramides
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",  // Templo Dendur
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543937/1082904/main-image",  // Mastaba Perneb (Saqqara)
         // [1] Art.2 Templos de Karnak
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",  // Rey Menkaure
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",  // Templo Dendur
         // [2] Art.3 La Gran Esfinge
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Esfinge Hatshepsut
         // [3] Art.4 Valle de los Reyes
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548211/1220671/main-image",  // Sarcofago Harkhebit
         // [4] Art.5 Obeliscos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",  // Hatshepsut arrodillada
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",  // Hatshepsut (mando construir obeliscos)
         // [5-9] Galeria extra
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",  // Rey Menkaure
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543910/1172813/main-image",  // Pedestal Khafre
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Esfinge Amenhotep
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image",  // Sarcofago Khnumhotep
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544450/2105723/main-image"   // Hatshepsut sentada
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"   // Sarcofago Khnumhotep
     )
 
     val imageUrlsArte = listOf(
