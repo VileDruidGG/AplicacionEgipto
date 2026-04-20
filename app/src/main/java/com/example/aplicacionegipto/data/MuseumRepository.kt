@@ -55,60 +55,42 @@ object MuseumRepository {
     // === URLs IIIF del Met Museum ===
 
     val imageUrlsVidaCotidiana = listOf(
-        // [0] Art.1 Alimentacion y cocina
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544258/1178720/main-image",  // Panaderia Meketre
-        // [1] Art.2 Vestimenta y joyeria
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544524/1793037/main-image",  // Lady Tiye vestido+peluca
-        // [2] Art.3 La familia egipcia
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543901/1214210/main-image",  // Nikare+esposa+hija
-        // [3] Art.4 Juegos y entretenimiento
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543867/1221835/main-image",  // Hounds & Jackals
-        // [4] Art.5 Medicina y salud
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546037/2306456/main-image",  // Estela magica Horus
-        // [5-9] Galeria extra
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544212/1220804/main-image",  // Barco cocina
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544232/1151819/main-image",  // Pectoral joya
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544740/1151839/main-image",  // Yuny+esposa
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547031/1084353/main-image",  // Caja cosmetica
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548310/1214471/main-image"   // Isis+Horus bebe
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544258/1178720/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544524/1793037/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543901/1214210/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543867/1221835/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546037/2306456/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544212/1220804/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544232/1151819/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544740/1151839/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547031/1084353/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548310/1214471/main-image"
     )
 
     val imageUrlsArquitectura = listOf(
-        // [0] Art.1 Las Grandes Piramides
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543937/1082904/main-image",  // Mastaba Perneb (Saqqara)
-        // [1] Art.2 Templos de Karnak
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",  // Templo Dendur
-        // [2] Art.3 La Gran Esfinge
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",  // Esfinge Hatshepsut
-        // [3] Art.4 Valle de los Reyes
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548211/1220671/main-image",  // Sarcofago Harkhebit
-        // [4] Art.5 Obeliscos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",  // Hatshepsut (mando construir obeliscos)
-        // [5-9] Galeria extra
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",  // Rey Menkaure
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543910/1172813/main-image",  // Pedestal Khafre
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",  // Esfinge Amenhotep
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"   // Sarcofago Khnumhotep
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543937/1082904/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/547802/1223802/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544442/2106258/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548211/1220671/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544449/1179859/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543935/1085207/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/543910/1172813/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544498/1151827/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"
     )
 
     val imageUrlsArte = listOf(
-        // [0] Art.1 Jeroglificos
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544166/1369337/main-image",  // Santuario jeroglificos
-        // [1] Art.2 Pintura mural
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548564/2311333/main-image",  // Gato mata serpiente
-        // [2] Art.3 Escultura
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544849/1151822/main-image",  // Hatshepsut escultura
-        // [3] Art.4 Mascara de Tutankamon
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",  // Mascara Hatnefer
-        // [4] Art.5 Arte funerario
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",  // Sarcofago Henettawy
-        // [5-9] Galeria extra
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544218/1297278/main-image",  // Mujer nubia
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",  // Esfinge Senwosret
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545146/1223831/main-image",  // Escarabajo
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546303/1212836/main-image",  // Sarcofago Ukhhotep
-        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"   // Sarcofago Khnumhotep
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544166/1369337/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548564/2311333/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544849/1151822/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545147/1086200/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/548264/1359380/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544218/1297278/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544186/1216912/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/545146/1223831/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/546303/1212836/main-image",
+        "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"
     )
 
     private val vidaCotidianaAudios = listOf(
@@ -133,31 +115,34 @@ object MuseumRepository {
         AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"Mascara")
     )
 
+    // === VIDEOS: Streams HLS de demostracion ===
+    // No existen streams HLS gratuitos con contenido egipcio real.
+    // Se usan streams de demo para demostrar la funcionalidad del reproductor.
     private const val HLS_TEARS = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
     private const val HLS_APPLE = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
     private const val HLS_AKAMAI = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
     private const val HLS_BLENDER = "https://ireplay.tv/test/blender.m3u8"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1","Un dia en Egipto",HLS_TEARS,"Vida de un artesano"),
-        VideoItem("vc_vid_2","Alimentacion",HLS_APPLE,"Culinaria egipcia"),
-        VideoItem("vc_vid_3","Fiestas",HLS_AKAMAI,"Festividades"),
-        VideoItem("vc_vid_4","Rol de la mujer",HLS_BLENDER,"Sociedad egipcia"),
-        VideoItem("vc_vid_5","Oficios",HLS_TEARS,"Escribas y artesanos")
+        VideoItem("vc_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
+        VideoItem("vc_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
+        VideoItem("vc_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
+        VideoItem("vc_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
+        VideoItem("vc_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1","Piramides",HLS_TEARS,"Construccion"),
-        VideoItem("arq_vid_2","Templos",HLS_APPLE,"Recorrido"),
-        VideoItem("arq_vid_3","Ingenieria",HLS_AKAMAI,"Innovaciones"),
-        VideoItem("arq_vid_4","Abu Simbel",HLS_BLENDER,"Traslado"),
-        VideoItem("arq_vid_5","Tutankamon",HLS_TEARS,"Descubrimiento")
+        VideoItem("arq_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
+        VideoItem("arq_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
+        VideoItem("arq_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
+        VideoItem("arq_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
+        VideoItem("arq_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1","Jeroglificos",HLS_TEARS,"Piedra Rosetta"),
-        VideoItem("art_vid_2","Colores",HLS_APPLE,"Pigmentos"),
-        VideoItem("art_vid_3","Tesoros",HLS_AKAMAI,"Tumba"),
-        VideoItem("art_vid_4","Momificacion",HLS_BLENDER,"Proceso ritual"),
-        VideoItem("art_vid_5","Escultura",HLS_TEARS,"Colosos")
+        VideoItem("art_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
+        VideoItem("art_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
+        VideoItem("art_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
+        VideoItem("art_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
+        VideoItem("art_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
