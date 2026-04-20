@@ -48,13 +48,16 @@ dependencies {
     // Navigation Compose
     implementation(libs.androidx.navigation.compose)
 
-    // ExoPlayer / Media3 (audio y video HLS)
+    // ExoPlayer / Media3 (audio)
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.hls)
     implementation(libs.androidx.media3.ui)
 
     // Coil (carga de imagenes desde URL)
     implementation(libs.coil.compose)
+
+    // YouTube Player (videos de YouTube embebidos en Compose)
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
     implementation(libs.androidx.compose.material.icons.extended)
     testImplementation(libs.junit)
