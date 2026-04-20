@@ -34,6 +34,7 @@ import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import com.example.aplicacionegipto.data.MuseumRepository
+import com.example.aplicacionegipto.model.AudioType
 import com.example.aplicacionegipto.ui.theme.*
 import kotlinx.coroutines.delay
 
@@ -52,7 +53,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
     var duration by remember { mutableLongStateOf(0L) }
     var currentMs by remember { mutableLongStateOf(0L) }
 
-    // ExoPlayer para audio MP3
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().apply {
             repeatMode = Player.REPEAT_MODE_OFF
@@ -60,7 +60,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
         }
     }
 
-    // Carga el audio cuando cambia la pista seleccionada
     fun loadTrack(index: Int) {
         val url = audios.getOrNull(index)?.audioUrl ?: return
         val dataSourceFactory = DefaultHttpDataSource.Factory()
@@ -74,7 +73,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
 
     LaunchedEffect(ci) { loadTrack(ci) }
 
-    // Actualizar progreso cada 500ms
     LaunchedEffect(isPlaying) {
         while (isPlaying) {
             val dur = exoPlayer.duration.takeIf { it > 0 } ?: 1L
@@ -83,14 +81,12 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
             currentMs = pos
             progress = pos.toFloat() / dur.toFloat()
             if (!exoPlayer.isPlaying && exoPlayer.playbackState == Player.STATE_ENDED) {
-                // Auto-siguiente
                 if (ci < audios.size - 1) { ci++; progress = 0f } else { isPlaying = false; progress = 0f }
             }
             delay(500L)
         }
     }
 
-    // Lifecycle
     DisposableEffect(lifecycleOwner) {
         val obs = LifecycleEventObserver { _, event ->
             when(event) {
@@ -124,7 +120,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
             Card(Modifier.fillMaxWidth().padding(16.dp), shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))) {
                 Column(Modifier.fillMaxWidth().padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    // Disco giratorio
                     Box(Modifier.size(160.dp).clip(CircleShape)
                         .background(Brush.sweepGradient(listOf(KohlBlack, GoldDark.copy(0.3f), KohlBlack, GoldPharaoh.copy(0.2f), KohlBlack)))
                         .rotate(if (isPlaying) rot else 0f)
@@ -140,7 +135,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
                     Spacer(Modifier.height(4.dp))
                     Text(cur?.description ?: "", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface.copy(0.6f), textAlign = TextAlign.Center)
                     Spacer(Modifier.height(16.dp))
-                    // Barra de progreso interactiva
                     Slider(
                         value = progress,
                         onValueChange = { v ->
@@ -156,7 +150,6 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
                         Text(fmt(duration), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface.copy(0.5f))
                     }
                     Spacer(Modifier.height(16.dp))
-                    // Controles
                     Row(horizontalArrangement = Arrangement.spacedBy(24.dp), verticalAlignment = Alignment.CenterVertically) {
                         IconButton(onClick = { if (ci > 0) { ci--; progress = 0f } }, modifier = Modifier.semantics { contentDescription = "Audio anterior" }) {
                             Icon(Icons.Default.SkipPrevious, null, Modifier.size(32.dp))
@@ -186,17 +179,17 @@ fun AudioPlayerScreen(sectionId: String, onBack: () -> Unit) {
                     val sel = i == ci; val playing = sel && isPlaying
                     Card(
                         Modifier.fillMaxWidth()
-                            .clickable {
-                                ci = i; progress = 0f
-                                isPlaying = true
-                                exoPlayer.play()
-                            }
+                            .clickable { ci = i; progress = 0f; isPlaying = true; exoPlayer.play() }
                             .semantics { contentDescription = "${audio.title}. ${audio.description}. ${if (playing) "Reproduciendose." else "Toca para reproducir."}" },
                         shape = RoundedCornerShape(8.dp),
                         colors = CardDefaults.cardColors(containerColor = if (sel) MaterialTheme.colorScheme.primaryContainer.copy(0.3f) else MaterialTheme.colorScheme.surface)
                     ) {
                         Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                            val icon = when(audio.type) { AudioType.AMBIENT -> "🌿"; AudioType.NARRATION -> "🎙️"; AudioType.MUSIC -> "🎵" }
+                            val icon = when(audio.type) {
+                                AudioType.AMBIENT   -> "🌿"
+                                AudioType.NARRATION -> "🎙️"
+                                AudioType.MUSIC     -> "🎵"
+                            }
                             Text(icon, fontSize = 24.sp)
                             Column(Modifier.weight(1f)) {
                                 Text(audio.title, style = MaterialTheme.typography.titleSmall.copy(fontWeight = if (sel) FontWeight.Bold else FontWeight.Normal), color = if (sel) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
