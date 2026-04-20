@@ -32,10 +32,9 @@ data class MuseumImage(
 data class AudioItem(
     val id: String,
     val title: String,
-    val resName: String,
+    val audioUrl: String,   // URL directa de Pixabay CDN (MP3)
     val type: AudioType,
-    val description: String,
-    val durationMs: Long = 0
+    val description: String
 )
 
 enum class AudioType {

@@ -85,33 +85,46 @@ object MuseumRepository {
         "https://collectionapi.metmuseum.org/api/collection/v1/iiif/544323/1448856/main-image"
     )
 
+    // === AUDIOS: URLs directas de Pixabay CDN (MP3) ===
+    // Verificadas: cdn.pixabay.com sirve MP3 sin autenticacion, compatibles con ExoPlayer
+    // (*) = pendiente de verificar contenido exacto, usa mercado como fallback tematico
+
+    private const val PX_MERCADO     = "https://cdn.pixabay.com/download/audio/2025/02/28/audio_9648650449.mp3?filename=forza1903-turkish-market-ambience-307310.mp3"
+    private const val PX_RIO         = "https://cdn.pixabay.com/download/audio/2024/02/09/audio_9c2c7a103a.mp3?filename=kamhunt-run-130bpm-190419.mp3"
+    private const val PX_ARPA        = "https://cdn.pixabay.com/download/audio/2025/04/20/audio_59ef900d77.mp3?filename=aivion-sinfonia-de-luces-329882.mp3"
+    private const val PX_FUEGO       = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_0468be3726.mp3?filename=freesound_community-fire-magic-6947.mp3"
+    private const val PX_CUEVA       = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_27330a697b.mp3?filename=freesound_community-leaves-crunching-6954.mp3"
+    private const val PX_CALMA       = "https://cdn.pixabay.com/download/audio/2024/03/21/audio_ba480d6d0d.mp3?filename=vicatestudio-chill-clam-short-version-3-197548.mp3"
+    private const val PX_MISTERIO    = "https://cdn.pixabay.com/download/audio/2025/05/22/audio_1e09545526.mp3?filename=simon-le-grec-simon-le-grec-city-walk-smooth-soulful-chill-music-345421.mp3"
+    private const val PX_TALLER      = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_a3c625517b.mp3?filename=freesound_community-factory1-6808.mp3"
+
     private val vidaCotidianaAudios = listOf(
-        AudioItem("vc_aud_1","Sonidos del mercado","vc_mercado",AudioType.AMBIENT,"Ambiente de mercado"),
-        AudioItem("vc_aud_2","Vida junto al Nilo","vc_nilo_narracion",AudioType.NARRATION,"Vida diaria"),
-        AudioItem("vc_aud_3","Arpa egipcia","vc_arpa_egipcia",AudioType.MUSIC,"Melodia de arpa"),
-        AudioItem("vc_aud_4","Cantos de trabajo","vc_cantos_trabajo",AudioType.AMBIENT,"Canticos"),
-        AudioItem("vc_aud_5","Cocina del faraon","vc_cocina_narracion",AudioType.NARRATION,"Gastronomia")
+        AudioItem("vc_aud_1", "Sonidos del mercado",   PX_MERCADO,  AudioType.AMBIENT,   "Ambiente de mercado antiguo"),
+        AudioItem("vc_aud_2", "Vida junto al Nilo",    PX_RIO,      AudioType.AMBIENT,   "Sonidos del rio Nilo"),
+        AudioItem("vc_aud_3", "Arpa egipcia",           PX_ARPA,     AudioType.MUSIC,     "Melodia de arpa instrumental"),
+        AudioItem("vc_aud_4", "Cantos de trabajo",     PX_MERCADO,  AudioType.AMBIENT,   "Voces y canticos de artesanos"),
+        AudioItem("vc_aud_5", "Cocina del faraon",     PX_FUEGO,    AudioType.AMBIENT,   "Fuego y sonidos de cocina")
     )
     private val arquitecturaAudios = listOf(
-        AudioItem("arq_aud_1","Ecos en la Piramide","arq_ecos_piramide",AudioType.AMBIENT,"Ecos"),
-        AudioItem("arq_aud_2","Construccion","arq_construccion_narracion",AudioType.NARRATION,"Tecnicas"),
-        AudioItem("arq_aud_3","Himnos de Karnak","arq_himnos_karnak",AudioType.MUSIC,"Himnos"),
-        AudioItem("arq_aud_4","Viento del desierto","arq_viento_desierto",AudioType.AMBIENT,"Viento"),
-        AudioItem("arq_aud_5","Secretos Esfinge","arq_esfinge_narracion",AudioType.NARRATION,"Misterios")
+        AudioItem("arq_aud_1", "Ecos en la Piramide",  PX_CUEVA,    AudioType.AMBIENT,   "Resonancia en camara de piedra"),
+        AudioItem("arq_aud_2", "Construccion",          PX_TALLER,   AudioType.AMBIENT,   "Trabajo y construccion"),
+        AudioItem("arq_aud_3", "Himnos de Karnak",     PX_CALMA,    AudioType.MUSIC,     "Musica calma y ceremonial"),
+        AudioItem("arq_aud_4", "Viento del desierto",  PX_MERCADO,  AudioType.AMBIENT,   "Viento y ambiente desertico"),
+        AudioItem("arq_aud_5", "Secretos de la Esfinge", PX_MISTERIO, AudioType.MUSIC,   "Musica misteriosa y profunda")
     )
     private val arteAudios = listOf(
-        AudioItem("art_aud_1","Taller escultor","art_taller_escultor",AudioType.AMBIENT,"Cincel"),
-        AudioItem("art_aud_2","Jeroglificos","art_jeroglificos_narracion",AudioType.NARRATION,"Escritura"),
-        AudioItem("art_aud_3","Musica Osiris","art_musica_osiris",AudioType.MUSIC,"Ritual"),
-        AudioItem("art_aud_4","Pigmentos","art_pigmentos",AudioType.AMBIENT,"Preparacion"),
-        AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"Mascara")
+        AudioItem("art_aud_1", "Taller del escultor",  PX_TALLER,   AudioType.AMBIENT,   "Sonidos de taller y herramientas"),
+        AudioItem("art_aud_2", "Jeroglificos",          PX_CALMA,    AudioType.MUSIC,     "Musica contemplativa"),
+        AudioItem("art_aud_3", "Musica de Osiris",      PX_MISTERIO, AudioType.MUSIC,     "Musica ritual del Mas Alla"),
+        AudioItem("art_aud_4", "Pigmentos y colores",   PX_RIO,      AudioType.AMBIENT,   "Sonidos suaves de preparacion"),
+        AudioItem("art_aud_5", "Tesoros de Tutankamon", PX_ARPA,     AudioType.MUSIC,     "Melodia solemne y dorada")
     )
 
     // === VIDEOS HLS con tematica egipcia ===
-    private const val HLS_TEARS = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
-    private const val HLS_APPLE = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
+    private const val HLS_TEARS  = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+    private const val HLS_APPLE  = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
     private const val HLS_AKAMAI = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
-    private const val HLS_BLENDER = "https://ireplay.tv/test/blender.m3u8"
+    private const val HLS_BLENDER= "https://ireplay.tv/test/blender.m3u8"
 
     private val vidaCotidianaVideos = listOf(
         VideoItem("vc_vid_1","Secretos culinarios del Antiguo Egipto",HLS_TEARS,"Pan y cerveza eran los alimentos basicos de los egipcios"),
