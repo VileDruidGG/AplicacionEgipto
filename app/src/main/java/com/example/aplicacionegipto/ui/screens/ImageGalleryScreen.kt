@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -30,15 +31,15 @@ fun ImageGalleryScreen(sectionId: String, onImageClick: (Int) -> Unit, onBack: (
         "arte"           -> "Arte"
         else             -> "Galeria"
     }
-    val images = MuseumRepository.getImages(sectionId)
+    val images    = MuseumRepository.getImages(sectionId)
     val imageUrls = MuseumRepository.getImageUrls(sectionId)
 
-    // FIX gris: gradiente egipcio para usar como fondo mientras carga cada imagen
-    val sectionGradient = when (sectionId) {
-        "vida_cotidiana" -> listOf(OcreEgypt.copy(alpha = 0.6f), GoldDark.copy(alpha = 0.4f))
-        "arquitectura"   -> listOf(LapisLazuli.copy(alpha = 0.6f), TurquoiseEgypt.copy(alpha = 0.4f))
-        "arte"           -> listOf(RedDesert.copy(alpha = 0.6f), OcreEgypt.copy(alpha = 0.4f))
-        else             -> listOf(GoldDark.copy(alpha = 0.4f), GoldPharaoh.copy(alpha = 0.3f))
+    // Color de fondo tematico por seccion (visible mientras carga la imagen)
+    val bgColor = when (sectionId) {
+        "vida_cotidiana" -> OcreEgypt
+        "arquitectura"   -> LapisLazuli
+        "arte"           -> RedDesert
+        else             -> GoldDark
     }
 
     Scaffold(topBar = {
@@ -57,8 +58,7 @@ fun ImageGalleryScreen(sectionId: String, onImageClick: (Int) -> Unit, onBack: (
                 "Toca una imagen para verla en detalle.",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                     .semantics { contentDescription = "Galeria de ${images.size} imagenes." }
             )
             LazyVerticalGrid(
@@ -69,36 +69,33 @@ fun ImageGalleryScreen(sectionId: String, onImageClick: (Int) -> Unit, onBack: (
             ) {
                 items(images.size) { index ->
                     val desc = images.getOrNull(index)?.contentDescription ?: "Imagen ${index + 1}"
-                    val url = imageUrls.getOrNull(index) ?: ""
+                    val url  = imageUrls.getOrNull(index) ?: ""
+                    val shape = RoundedCornerShape(8.dp)
 
-                    Card(
+                    // FIX GRIS REAL: eliminar Card (que impone su propio containerColor gris)
+                    // y reemplazar por Box con clip + elevation via shadow.
+                    // El fondo bgColor es siempre visible debajo de la imagen.
+                    Box(
                         modifier = Modifier
                             .aspectRatio(1f)
+                            .clip(shape)
+                            .background(bgColor.copy(alpha = 0.55f))  // fondo siempre visible
                             .clickable(
                                 onClick = { onImageClick(index) },
                                 onClickLabel = "Ver imagen ${index + 1}"
                             )
                             .semantics { contentDescription = "Imagen ${index + 1}: $desc. Toca para ampliar." },
-                        shape = RoundedCornerShape(8.dp),
-                        elevation = CardDefaults.cardElevation(2.dp)
+                        contentAlignment = Alignment.Center
                     ) {
-                        // FIX gris: Box con fondo egipcio siempre visible debajo de la imagen
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .background(Brush.verticalGradient(sectionGradient)),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            if (url.isNotEmpty()) {
-                                MuseumAsyncImage(
-                                    imageUrl = url,
-                                    description = desc,
-                                    modifier = Modifier.fillMaxSize(),
-                                    contentScale = ContentScale.Crop
-                                )
-                            } else {
-                                Text("${index + 1}", color = Color.White)
-                            }
+                        if (url.isNotEmpty()) {
+                            MuseumAsyncImage(
+                                imageUrl = url,
+                                description = desc,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop
+                            )
+                        } else {
+                            Text("${index + 1}", color = Color.White)
                         }
                     }
                 }
