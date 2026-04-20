@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aplicacionegipto.data.MuseumRepository
-import com.example.aplicacionegipto.ui.components.VideoPlayerView as VPV
+import com.example.aplicacionegipto.ui.components.YouTubePlayerComposable
 import com.example.aplicacionegipto.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,9 +31,17 @@ fun VideoPlayerScreen(sectionId: String, onBack: () -> Unit) {
     var ci by remember { mutableIntStateOf(0) }
     Scaffold(topBar = { TopAppBar(title = { Text("Videos - $t", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)) }, navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Regresar") } }, colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.background)) }) { pv ->
         LazyColumn(Modifier.fillMaxSize().padding(pv), contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            item { val url = videos.getOrNull(ci)?.url ?: ""; if (url.isNotEmpty()) VPV(videoUrl = url, description = "Video: ${videos.getOrNull(ci)?.title ?: ""}") }
+            item {
+                val videoId = videos.getOrNull(ci)?.youtubeId ?: ""
+                if (videoId.isNotEmpty()) {
+                    YouTubePlayerComposable(
+                        youtubeId = videoId,
+                        description = "Video: ${videos.getOrNull(ci)?.title ?: ""}"
+                    )
+                }
+            }
             item { val v = videos.getOrNull(ci); if (v != null) Column(modifier = Modifier.semantics { contentDescription = "Video: ${v.title}. ${v.description}" }) { Text(v.title, style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)); Spacer(Modifier.height(4.dp)); Text(v.description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)) } }
-            item { Text("Mas videos documentales", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.primary) }
+            item { Text("Mas videos sobre Egipto", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.primary) }
             itemsIndexed(videos) { i, v ->
                 Card(Modifier.fillMaxWidth().clickable { ci = i }.semantics { contentDescription = "Video ${i+1}: ${v.title}. ${v.description}" }, shape = RoundedCornerShape(8.dp), colors = CardDefaults.cardColors(containerColor = if (i == ci) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) else MaterialTheme.colorScheme.surface), elevation = CardDefaults.cardElevation(if (i == ci) 4.dp else 1.dp)) {
                     Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
