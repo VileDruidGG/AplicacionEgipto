@@ -5,8 +5,6 @@ import com.example.aplicacionegipto.model.*
 object MuseumRepository {
 
     // === VIDA COTIDIANA ===
-    // [0] Art.1 Alimentacion | [1] Art.2 Vestimenta | [2] Art.3 Familia
-    // [3] Art.4 Juegos | [4] Art.5 Medicina | [5-9] Galeria
     private val vidaCotidianaImages = listOf(
         MuseumImage("vc1","vc1","Panaderia y cerveceria","Modelo de taller de pan y cerveza de la tumba de Meketre"),
         MuseumImage("vc2","vc2","Estatuilla de Lady Tiye","Mujer noble egipcia con vestido de lino y peluca elaborada"),
@@ -20,9 +18,6 @@ object MuseumRepository {
         MuseumImage("vc10","vc10","Isis con Horus bebe","Diosa Isis amamantando a Horus, simbolo de proteccion maternal")
     )
 
-    // === ARQUITECTURA ===
-    // [0] Art.1 Piramides | [1] Art.2 Templos | [2] Art.3 Esfinge
-    // [3] Art.4 Valle Reyes | [4] Art.5 Obeliscos | [5-9] Galeria
     private val arquitecturaImages = listOf(
         MuseumImage("ar1","ar1","Mastaba de Perneb","Tumba mastaba de piedra caliza del administrador Perneb en Saqqara"),
         MuseumImage("ar2","ar2","Templo de Dendur","Templo egipcio completo reconstruido en el Metropolitan Museum"),
@@ -36,9 +31,6 @@ object MuseumRepository {
         MuseumImage("ar10","ar10","Sarcofago de Khnumhotep","Sarcofago del Reino Medio con ojos wedjat pintados")
     )
 
-    // === ARTE ===
-    // [0] Art.1 Jeroglificos | [1] Art.2 Pintura | [2] Art.3 Escultura
-    // [3] Art.4 Mascara | [4] Art.5 Funerario | [5-9] Galeria
     private val arteImages = listOf(
         MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat con jeroglificos tallados en piedra"),
         MuseumImage("at2","at2","Pintura mural del gato","Pintura de gato matando serpiente de la tumba de Sennedjem"),
@@ -115,34 +107,29 @@ object MuseumRepository {
         AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"Mascara")
     )
 
-    // === VIDEOS: Streams HLS de demostracion ===
-    // No existen streams HLS gratuitos con contenido egipcio real.
-    // Se usan streams de demo para demostrar la funcionalidad del reproductor.
-    private const val HLS_TEARS = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
-    private const val HLS_APPLE = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
-    private const val HLS_AKAMAI = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
-    private const val HLS_BLENDER = "https://ireplay.tv/test/blender.m3u8"
+    // === VIDEOS DE YOUTUBE sobre Egipto ===
+    // Cada VideoItem usa youtubeId (el ID del video de YouTube)
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
-        VideoItem("vc_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
-        VideoItem("vc_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
-        VideoItem("vc_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
-        VideoItem("vc_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
+        VideoItem("vc_vid_1","Secretos culinarios: Pan y cerveza","gH_C3biV9Dc","Explora la fascinante cocina del Antiguo Egipto donde pan y cerveza eran alimentos basicos"),
+        VideoItem("vc_vid_2","Pan y cerveza en el Antiguo Egipto","aLGqN2C1PIE","Comida y bebida en la vida cotidiana de los antiguos egipcios"),
+        VideoItem("vc_vid_3","Como hacer una momia","9gD0K7oH92U","Proceso de momificacion egipcia paso a paso"),
+        VideoItem("vc_vid_4","Las Piramides Egipcias (corto animado)","j6PbonHsqW0","Divertido cortometraje animado sobre el secreto de las piramides"),
+        VideoItem("vc_vid_5","Como construir una piramide","GtJW-8ZvNE8","Explicacion animada de la construccion de las piramides")
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
-        VideoItem("arq_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
-        VideoItem("arq_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
-        VideoItem("arq_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
-        VideoItem("arq_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
+        VideoItem("arq_vid_1","Como construir una piramide","GtJW-8ZvNE8","Explicacion animada de como los egipcios construyeron las piramides"),
+        VideoItem("arq_vid_2","Karnak: El templo mas grande","uJOFY_p0rIM","Como se construyo el complejo de templos mas grande de la historia"),
+        VideoItem("arq_vid_3","Tesoros de Tutankamon (NatGeo)","KR_B0OCnq4U","Episodio completo de National Geographic sobre los tesoros de Tut"),
+        VideoItem("arq_vid_4","Interior del Templo de Karnak","oGEfWjWHhQU","Recorrido por el interior del templo de Karnak y Luxor"),
+        VideoItem("arq_vid_5","Interior del complejo de Karnak","AHkpS7vbkTk","Viaje epico al complejo del templo de Karnak del Antiguo Egipto")
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1","Demo: Tears of Steel",HLS_TEARS,"Demostracion del reproductor HLS con cortometraje de ciencia ficcion"),
-        VideoItem("art_vid_2","Demo: Stream Apple fMP4",HLS_APPLE,"Demostracion de streaming adaptativo con contenido de prueba Apple"),
-        VideoItem("art_vid_3","Demo: Stream en vivo Akamai",HLS_AKAMAI,"Demostracion de transmision en vivo via CDN Akamai"),
-        VideoItem("art_vid_4","Demo: Blender Open Movie",HLS_BLENDER,"Demostracion con contenido de la fundacion Blender"),
-        VideoItem("art_vid_5","Demo: Tears of Steel (2)",HLS_TEARS,"Segunda instancia del reproductor para pruebas de navegacion")
+        VideoItem("art_vid_1","Las Piramides Egipcias (corto animado)","j6PbonHsqW0","Cortometraje animado sobre un arqueologo descubriendo el secreto de las piramides"),
+        VideoItem("art_vid_2","Secretos culinarios del Antiguo Egipto","gH_C3biV9Dc","Descubre la cocina egipcia y sus pinturas murales sobre alimentos"),
+        VideoItem("art_vid_3","Tesoros de Tutankamon","KR_B0OCnq4U","Explora los tesoros artisticos encontrados en la tumba de Tutankamon"),
+        VideoItem("art_vid_4","Como hacer una momia","9gD0K7oH92U","El arte de la momificacion: tecnicas y rituales funerarios"),
+        VideoItem("art_vid_5","Karnak: arte y arquitectura","uJOFY_p0rIM","Los relieves, esculturas y jeroglificos del templo de Karnak")
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
