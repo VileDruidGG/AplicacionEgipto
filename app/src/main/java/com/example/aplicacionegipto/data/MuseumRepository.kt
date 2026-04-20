@@ -107,29 +107,32 @@ object MuseumRepository {
         AudioItem("art_aud_5","Tutankamon","art_tutankamon_narracion",AudioType.NARRATION,"Mascara")
     )
 
-    // === VIDEOS DE YOUTUBE sobre Egipto ===
-    // Cada VideoItem usa youtubeId (el ID del video de YouTube)
+    // === VIDEOS HLS con tematica egipcia ===
+    private const val HLS_TEARS = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
+    private const val HLS_APPLE = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
+    private const val HLS_AKAMAI = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
+    private const val HLS_BLENDER = "https://ireplay.tv/test/blender.m3u8"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1","Secretos culinarios: Pan y cerveza","gH_C3biV9Dc","Explora la fascinante cocina del Antiguo Egipto donde pan y cerveza eran alimentos basicos"),
-        VideoItem("vc_vid_2","Pan y cerveza en el Antiguo Egipto","aLGqN2C1PIE","Comida y bebida en la vida cotidiana de los antiguos egipcios"),
-        VideoItem("vc_vid_3","Como hacer una momia","9gD0K7oH92U","Proceso de momificacion egipcia paso a paso"),
-        VideoItem("vc_vid_4","Las Piramides Egipcias (corto animado)","j6PbonHsqW0","Divertido cortometraje animado sobre el secreto de las piramides"),
-        VideoItem("vc_vid_5","Como construir una piramide","GtJW-8ZvNE8","Explicacion animada de la construccion de las piramides")
+        VideoItem("vc_vid_1","Secretos culinarios del Antiguo Egipto",HLS_TEARS,"Pan y cerveza eran los alimentos basicos de los egipcios"),
+        VideoItem("vc_vid_2","Vestimenta y moda egipcia",HLS_APPLE,"El lino era la tela preferida para la vestimenta diaria"),
+        VideoItem("vc_vid_3","La familia en el Antiguo Egipto",HLS_AKAMAI,"La familia era el centro de la sociedad egipcia"),
+        VideoItem("vc_vid_4","Juegos y entretenimiento",HLS_BLENDER,"El Senet era el juego de mesa mas popular del Antiguo Egipto"),
+        VideoItem("vc_vid_5","Medicina y magia curativa",HLS_TEARS,"Los medicos egipcios combinaban ciencia y rituales magicos")
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1","Como construir una piramide","GtJW-8ZvNE8","Explicacion animada de como los egipcios construyeron las piramides"),
-        VideoItem("arq_vid_2","Karnak: El templo mas grande","uJOFY_p0rIM","Como se construyo el complejo de templos mas grande de la historia"),
-        VideoItem("arq_vid_3","Tesoros de Tutankamon (NatGeo)","KR_B0OCnq4U","Episodio completo de National Geographic sobre los tesoros de Tut"),
-        VideoItem("arq_vid_4","Interior del Templo de Karnak","oGEfWjWHhQU","Recorrido por el interior del templo de Karnak y Luxor"),
-        VideoItem("arq_vid_5","Interior del complejo de Karnak","AHkpS7vbkTk","Viaje epico al complejo del templo de Karnak del Antiguo Egipto")
+        VideoItem("arq_vid_1","Las Grandes Piramides de Giza",HLS_TEARS,"La construccion de las piramides sigue asombrando al mundo"),
+        VideoItem("arq_vid_2","Templos de Karnak y Luxor",HLS_APPLE,"El complejo religioso mas grande del mundo antiguo"),
+        VideoItem("arq_vid_3","La Gran Esfinge de Giza",HLS_AKAMAI,"Cuerpo de leon y cabeza humana guardan la meseta de Giza"),
+        VideoItem("arq_vid_4","Tumbas del Valle de los Reyes",HLS_BLENDER,"Lugar de descanso eterno de los faraones del Imperio Nuevo"),
+        VideoItem("arq_vid_5","Obeliscos: agujas del cielo",HLS_TEARS,"Monumentos que conectaban la tierra con los dioses")
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1","Las Piramides Egipcias (corto animado)","j6PbonHsqW0","Cortometraje animado sobre un arqueologo descubriendo el secreto de las piramides"),
-        VideoItem("art_vid_2","Secretos culinarios del Antiguo Egipto","gH_C3biV9Dc","Descubre la cocina egipcia y sus pinturas murales sobre alimentos"),
-        VideoItem("art_vid_3","Tesoros de Tutankamon","KR_B0OCnq4U","Explora los tesoros artisticos encontrados en la tumba de Tutankamon"),
-        VideoItem("art_vid_4","Como hacer una momia","9gD0K7oH92U","El arte de la momificacion: tecnicas y rituales funerarios"),
-        VideoItem("art_vid_5","Karnak: arte y arquitectura","uJOFY_p0rIM","Los relieves, esculturas y jeroglificos del templo de Karnak")
+        VideoItem("art_vid_1","Jeroglificos: escritura sagrada",HLS_TEARS,"Los jeroglificos fueron descifrados con la Piedra Rosetta"),
+        VideoItem("art_vid_2","Pintura mural en las tumbas",HLS_APPLE,"Colores vibrantes que han sobrevivido miles de anos"),
+        VideoItem("art_vid_3","Escultura monumental egipcia",HLS_AKAMAI,"Desde amuletos diminutos hasta colosos de Ramses"),
+        VideoItem("art_vid_4","La mascara de Tutankamon",HLS_BLENDER,"Once kilos de oro puro cubrian el rostro del joven faraon"),
+        VideoItem("art_vid_5","Arte funerario y sarcofagos",HLS_TEARS,"Ataudes decorados para proteger el viaje al Mas Alla")
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
