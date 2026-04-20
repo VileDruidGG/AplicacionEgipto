@@ -2,7 +2,7 @@ package com.example.aplicacionegipto.ui.navigation
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -18,6 +18,10 @@ fun MuseumNavGraph(
     onTextScaleChange: (Float) -> Unit,
     onHighContrastChange: (Boolean) -> Unit
 ) {
+    // Estado global del audio descriptivo, compartido entre AccessibilityScreen
+    // e ImageViewerScreen via hoisting en el NavGraph
+    var audioDescEnabled by remember { mutableStateOf(true) }
+
     NavHost(navController = navController, startDestination = Screen.Splash.route) {
         composable(Screen.Splash.route, exitTransition = { fadeOut(tween(500)) }) {
             SplashScreen(onNavigateToHome = {
@@ -72,7 +76,12 @@ fun MuseumNavGraph(
         ) { entry ->
             val sectionId = entry.arguments?.getString("sectionId") ?: return@composable
             val imageIndex = entry.arguments?.getInt("imageIndex") ?: 0
-            ImageViewerScreen(sectionId = sectionId, initialIndex = imageIndex, onBack = { navController.popBackStack() })
+            ImageViewerScreen(
+                sectionId = sectionId,
+                initialIndex = imageIndex,
+                audioDescEnabled = audioDescEnabled,   // <-- estado global conectado
+                onBack = { navController.popBackStack() }
+            )
         }
         composable(Screen.AudioPlayer.route, arguments = listOf(navArgument("sectionId") { type = NavType.StringType }),
             enterTransition = { slideInVertically(initialOffsetY = { it }, animationSpec = tween(500)) },
@@ -92,9 +101,15 @@ fun MuseumNavGraph(
             enterTransition = { slideInVertically(initialOffsetY = { it / 2 }, animationSpec = tween(400)) },
             popExitTransition = { slideOutVertically(targetOffsetY = { it / 2 }, animationSpec = tween(300)) }
         ) {
-            AccessibilityScreen(currentTextScale = textScale, currentHighContrast = highContrast,
-                onTextScaleChange = onTextScaleChange, onHighContrastChange = onHighContrastChange,
-                onBack = { navController.popBackStack() })
+            AccessibilityScreen(
+                currentTextScale = textScale,
+                currentHighContrast = highContrast,
+                onTextScaleChange = onTextScaleChange,
+                onHighContrastChange = onHighContrastChange,
+                audioDescEnabled = audioDescEnabled,               // <-- pasar estado
+                onAudioDescChange = { audioDescEnabled = it },     // <-- recibir cambios
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
