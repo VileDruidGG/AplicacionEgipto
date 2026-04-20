@@ -47,8 +47,10 @@ enum class AudioType {
 data class VideoItem(
     val id: String,
     val title: String,
-    val youtubeId: String,
-    val description: String
+    val url: String,
+    val description: String,
+    val thumbnailResName: String? = null,
+    val durationMs: Long = 0
 )
 
 enum class AgeGroup(val label: String) {
