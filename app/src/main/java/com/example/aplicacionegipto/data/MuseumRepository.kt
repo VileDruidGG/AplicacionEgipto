@@ -114,39 +114,50 @@ object MuseumRepository {
         AudioItem("art_aud_5", "Tesoros de Tutankamon",  PX_ARPA,     AudioType.MUSIC,   "Melodia solemne y dorada")
     )
 
-    // === VIDEOS: Wikimedia Commons (WebM/OGV, verificados con Range 206) ===
-    // Pixabay bloquea hotlinking de video. Wikimedia permite acceso publico.
-    private const val WK_GIZA     = "https://upload.wikimedia.org/wikipedia/commons/4/43/Giza_pyramid_complex_3D_flyover.webm"
-    private const val WK_PLATEAU  = "https://upload.wikimedia.org/wikipedia/commons/f/fb/View_pyramid_plateau.ogv"
-    private const val WK_NILE1    = "https://upload.wikimedia.org/wikipedia/commons/0/04/Nile-River-Cruise.ogv"
-    private const val WK_NILE2    = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Nile-River2.ogv"
-    private const val WK_NUBIA    = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Nuri_Pyramids_from_top_of_the_Pyramid_of_King_Taharqa.webm"
-    private const val WK_MUMMY    = "https://upload.wikimedia.org/wikipedia/commons/7/73/US_Scientists_Get_Closer_Look_at_Egyptian_Mummy.webm"
-    private const val WK_EGYPT    = "https://upload.wikimedia.org/wikipedia/commons/5/5c/Dream_Machine_Egypt_animation.webm"
-    private const val WK_CAIRO    = "https://upload.wikimedia.org/wikipedia/commons/a/a8/Open_street_maps_zooming_to_Cairo%2C_Egypt.webm"
-    private const val WK_COUPLE   = "https://upload.wikimedia.org/wikipedia/commons/e/ee/Royal_couple-MAHG_12440-0001-0250.ogv"
-    private const val WK_PYRAMIDS = "https://upload.wikimedia.org/wikipedia/commons/7/7f/Pyramids.ogv"
+    // === VIDEOS ===
+    // Wikimedia WebM (VP8/VP9): verificados en dispositivo fisico
+    // Pixabay MP4 _tiny: el emulador los bloquea por CORS, el fisico puede reproducirlos
+    // OGV/Theora descartado: soporte limitado en Android
+
+    // -- Wikimedia WebM (confirmados funcionando) --
+    private const val WK_EGYPT  = "https://upload.wikimedia.org/wikipedia/commons/5/5c/Dream_Machine_Egypt_animation.webm"  // 0.8MB ✅ fisico OK
+    private const val WK_GIZA   = "https://upload.wikimedia.org/wikipedia/commons/4/43/Giza_pyramid_complex_3D_flyover.webm" // 2.5MB webm
+    private const val WK_NUBIA  = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Nuri_Pyramids_from_top_of_the_Pyramid_of_King_Taharqa.webm" // 16MB webm
+    private const val WK_MUMMY  = "https://upload.wikimedia.org/wikipedia/commons/7/73/US_Scientists_Get_Closer_Look_at_Egyptian_Mummy.webm"       // 7.4MB webm
+    private const val WK_CAIRO  = "https://upload.wikimedia.org/wikipedia/commons/a/a8/Open_street_maps_zooming_to_Cairo%2C_Egypt.webm"            // 5.4MB webm
+
+    // -- Pixabay MP4 tiny (probar en fisico) --
+    private const val PX_FARAON    = "https://cdn.pixabay.com/video/2023/07/15/171704-845775857_tiny.mp4"
+    private const val PX_ANUBIS    = "https://cdn.pixabay.com/video/2024/03/11/203845-922675645_tiny.mp4"
+    private const val PX_CAMELLO   = "https://cdn.pixabay.com/video/2023/11/24/190550-888131763_tiny.mp4"
+    private const val PX_PIRAMIDE  = "https://cdn.pixabay.com/video/2024/03/24/205415-926967131_tiny.mp4"
+    private const val PX_ESFINGE   = "https://cdn.pixabay.com/video/2021/06/13/77540-562572367_tiny.mp4"
+    private const val PX_TEMPLO    = "https://cdn.pixabay.com/video/2024/05/13/211847_tiny.mp4"
+    private const val PX_HIEROGLYPH= "https://cdn.pixabay.com/video/2019/04/26/23073-332665413_tiny.mp4"
+    private const val PX_MOMIA     = "https://cdn.pixabay.com/video/2024/05/13/211846_tiny.mp4"
+    private const val PX_FARAON2   = "https://cdn.pixabay.com/video/2024/06/06/215544_tiny.mp4"
+    private const val PX_CAIRO     = "https://cdn.pixabay.com/video/2015/12/04/1565-148219771_tiny.mp4"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1", "Vida en el Antiguo Egipto",         WK_EGYPT,   "Animacion sobre la vida en el Antiguo Egipto"),
-        VideoItem("vc_vid_2", "Pareja real egipcia",               WK_COUPLE,  "Representacion de una pareja noble del Antiguo Egipto"),
-        VideoItem("vc_vid_3", "El Rio Nilo",                       WK_NILE1,   "Crucero por el sagrado Rio Nilo"),
-        VideoItem("vc_vid_4", "Vistas del Nilo",                   WK_NILE2,   "Paisajes del Rio Nilo, fuente de vida de Egipto"),
-        VideoItem("vc_vid_5", "El Cairo desde el aire",            WK_CAIRO,   "Vista aerea de El Cairo, capital de Egipto")
+        VideoItem("vc_vid_1", "Vida en el Antiguo Egipto",      WK_EGYPT,    "Animacion del Antiguo Egipto"),         // webm ✅
+        VideoItem("vc_vid_2", "Un dia con el faraon",           PX_FARAON,   "Vida cotidiana bajo los faraones"),     // px tiny
+        VideoItem("vc_vid_3", "Caravanas en el desierto",       PX_CAMELLO,  "Camellos y comercio en el desierto"),   // px tiny
+        VideoItem("vc_vid_4", "El Cairo antiguo y moderno",     PX_CAIRO,    "La capital del Antiguo Egipto"),        // px tiny
+        VideoItem("vc_vid_5", "Dioses y rituales",              PX_ANUBIS,   "Anubis y la religion egipcia")          // px tiny
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1", "Vuelo 3D sobre Giza",              WK_GIZA,    "Recreacion 3D del complejo de piramides de Giza"),
-        VideoItem("arq_vid_2", "Meseta de las Piramides",          WK_PLATEAU, "Vista panoramica de la meseta de Giza"),
-        VideoItem("arq_vid_3", "Las Piramides de Egipto",          WK_PYRAMIDS,"Las grandes piramides del Antiguo Egipto"),
-        VideoItem("arq_vid_4", "Piramides de Nubia",               WK_NUBIA,   "Las piramides nubias del Rey Taharqa"),
-        VideoItem("arq_vid_5", "El Nilo y sus monumentos",         WK_NILE2,   "El Rio Nilo y la arquitectura a sus orillas")
+        VideoItem("arq_vid_1", "Vuelo 3D sobre Giza",           WK_GIZA,     "Recreacion 3D de las piramides"),       // webm
+        VideoItem("arq_vid_2", "Las Piramides de Giza",         PX_PIRAMIDE, "Las maravillas de Giza"),               // px tiny
+        VideoItem("arq_vid_3", "La Gran Esfinge",               PX_ESFINGE,  "Guardian de la meseta de Giza"),        // px tiny
+        VideoItem("arq_vid_4", "Templos del Nilo",              PX_TEMPLO,   "Los grandes templos egipcios"),         // px tiny
+        VideoItem("arq_vid_5", "Piramides de Nubia",            WK_NUBIA,    "Las piramides del Rey Taharqa")         // webm
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1", "Arte y momificacion egipcia",      WK_MUMMY,   "Ciencia moderna examina una momia del Antiguo Egipto"),
-        VideoItem("art_vid_2", "Animacion del Antiguo Egipto",     WK_EGYPT,   "Recreacion animada de la vida y el arte egipcio"),
-        VideoItem("art_vid_3", "Esculturas de la pareja real",     WK_COUPLE,  "Arte escultorico de parejas reales en el Antiguo Egipto"),
-        VideoItem("art_vid_4", "Piramides como arte monumental",   WK_GIZA,    "Las piramides de Giza como obra maestra del arte"),
-        VideoItem("art_vid_5", "Piramides de Nubia: arte y poder", WK_NUBIA,   "Las piramides nubias como expresion de arte y poder")
+        VideoItem("art_vid_1", "Jeroglificos: escritura sagrada",PX_HIEROGLYPH,"El sistema de escritura de Egipto"),  // px tiny
+        VideoItem("art_vid_2", "Momias y arte funerario",        WK_MUMMY,    "Ciencia y arte en la momificacion"),   // webm
+        VideoItem("art_vid_3", "El faraon en el arte",          PX_FARAON2,  "Representacion del faraon"),            // px tiny
+        VideoItem("art_vid_4", "El Cairo como obra de arte",    WK_CAIRO,    "Arquitectura y arte en El Cairo"),      // webm
+        VideoItem("art_vid_5", "Momias: arte para la eternidad",PX_MOMIA,    "El arte de preservar para siempre")     // px tiny
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
