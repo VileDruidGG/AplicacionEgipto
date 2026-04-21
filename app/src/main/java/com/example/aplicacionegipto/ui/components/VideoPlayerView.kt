@@ -14,6 +14,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MimeTypes
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultHttpDataSource
@@ -24,8 +25,9 @@ import androidx.media3.ui.PlayerView
 
 /**
  * VideoPlayerView con ExoPlayer.
- * Soporta tanto HLS (.m3u8) como MP4 directo (Pixabay CDN).
- * Detecta automaticamente el formato por la URL.
+ * Soporta HLS (.m3u8) y MP4 directo (Pixabay CDN).
+ * Fuerza MimeTypes.VIDEO_MP4 para evitar que content-type
+ * "binary/octet-stream" confunda a ExoPlayer.
  */
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
@@ -42,16 +44,26 @@ fun VideoPlayerView(
 
     LaunchedEffect(videoUrl) {
         val dataSourceFactory = DefaultHttpDataSource.Factory()
-            .setUserAgent("MuseoEgiptoApp/1.0")
+            .setUserAgent("MuseoEgiptoApp/1.0 (Android)")
+            .setAllowCrossProtocolRedirects(true)
+
         val uri = Uri.parse(videoUrl)
 
-        // Detectar formato: HLS para .m3u8, Progressive para MP4 directo
         val mediaSource = if (videoUrl.contains(".m3u8")) {
-            HlsMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(MediaItem.Builder().setUri(uri).build())
+            // Stream HLS
+            val mediaItem = MediaItem.Builder()
+                .setUri(uri)
+                .setMimeType(MimeTypes.APPLICATION_M3U8)
+                .build()
+            HlsMediaSource.Factory(dataSourceFactory).createMediaSource(mediaItem)
         } else {
-            ProgressiveMediaSource.Factory(dataSourceFactory)
-                .createMediaSource(MediaItem.fromUri(uri))
+            // MP4 directo — forzar MIME type para evitar problemas con
+            // servidores que devuelven binary/octet-stream
+            val mediaItem = MediaItem.Builder()
+                .setUri(uri)
+                .setMimeType(MimeTypes.VIDEO_MP4)
+                .build()
+            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(mediaItem)
         }
 
         exoPlayer.setMediaSource(mediaSource)
