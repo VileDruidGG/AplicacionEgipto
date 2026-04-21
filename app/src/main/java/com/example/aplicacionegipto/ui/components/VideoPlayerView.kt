@@ -19,15 +19,13 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.hls.HlsMediaSource
+import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.PlayerView
 
 /**
  * VideoPlayerView con ExoPlayer.
- * FIX: Usar Uri.parse() en vez de Uri.Builder().encodedPath()
- *      que corrompía la URL completa del stream HLS.
- * FIX: Crear ExoPlayer local en vez del singleton para evitar
- *      conflictos cuando se navega entre pantallas.
- * FIX: Agregar User-Agent al DataSource para evitar 403.
+ * Soporta tanto HLS (.m3u8) como MP4 directo (Pixabay CDN).
+ * Detecta automaticamente el formato por la URL.
  */
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
@@ -40,22 +38,23 @@ fun VideoPlayerView(
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
-    // Crear ExoPlayer local para esta pantalla
-    val exoPlayer = remember {
-        ExoPlayer.Builder(context).build()
-    }
+    val exoPlayer = remember { ExoPlayer.Builder(context).build() }
 
-    // Preparar la fuente de medios HLS
-    // FIX: Uri.parse() directamente, NO Uri.Builder().encodedPath()
     LaunchedEffect(videoUrl) {
         val dataSourceFactory = DefaultHttpDataSource.Factory()
             .setUserAgent("MuseoEgiptoApp/1.0")
-        val uri = Uri.parse(videoUrl)  // FIX: parse directo
-        val mediaItem = MediaItem.Builder().setUri(uri).build()
-        val hlsSource = HlsMediaSource.Factory(dataSourceFactory)
-            .createMediaSource(mediaItem)
+        val uri = Uri.parse(videoUrl)
 
-        exoPlayer.setMediaSource(hlsSource)
+        // Detectar formato: HLS para .m3u8, Progressive para MP4 directo
+        val mediaSource = if (videoUrl.contains(".m3u8")) {
+            HlsMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(MediaItem.Builder().setUri(uri).build())
+        } else {
+            ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(MediaItem.fromUri(uri))
+        }
+
+        exoPlayer.setMediaSource(mediaSource)
         exoPlayer.prepare()
     }
 
@@ -83,12 +82,11 @@ fun VideoPlayerView(
         )
     }
 
-    // Manejar ciclo de vida
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             when (event) {
                 Lifecycle.Event.ON_PAUSE -> exoPlayer.pause()
-                Lifecycle.Event.ON_RESUME -> { /* no auto-play */ }
+                Lifecycle.Event.ON_RESUME -> { }
                 else -> {}
             }
         }
@@ -96,10 +94,7 @@ fun VideoPlayerView(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    // Liberar ExoPlayer al salir
     DisposableEffect(Unit) {
-        onDispose {
-            exoPlayer.release()
-        }
+        onDispose { exoPlayer.release() }
     }
 }
