@@ -17,7 +17,6 @@ object MuseumRepository {
         MuseumImage("vc9","vc9","Caja cosmetica con tapa","Caja de cosmeticos con tapa giratoria para maquillaje y unguentos"),
         MuseumImage("vc10","vc10","Isis con Horus bebe","Diosa Isis amamantando a Horus, simbolo de proteccion maternal")
     )
-
     private val arquitecturaImages = listOf(
         MuseumImage("ar1","ar1","Mastaba de Perneb","Tumba mastaba de piedra caliza del administrador Perneb en Saqqara"),
         MuseumImage("ar2","ar2","Templo de Dendur","Templo egipcio completo reconstruido en el Metropolitan Museum"),
@@ -30,7 +29,6 @@ object MuseumRepository {
         MuseumImage("ar9","ar9","Esfinge de Amenhotep III","Esfinge unica de fayenza azul con manos humanas"),
         MuseumImage("ar10","ar10","Sarcofago de Khnumhotep","Sarcofago del Reino Medio con ojos wedjat pintados")
     )
-
     private val arteImages = listOf(
         MuseumImage("at1","at1","Santuario con jeroglificos","Santuario de Amenemhat con jeroglificos tallados en piedra"),
         MuseumImage("at2","at2","Pintura mural del gato","Pintura de gato matando serpiente de la tumba de Sennedjem"),
@@ -115,49 +113,47 @@ object MuseumRepository {
     )
 
     // === VIDEOS ===
-    // Wikimedia WebM (VP8/VP9): verificados en dispositivo fisico
-    // Pixabay MP4 _tiny: el emulador los bloquea por CORS, el fisico puede reproducirlos
-    // OGV/Theora descartado: soporte limitado en Android
+    // DIAGNOSTICO: Wikimedia no envia Accept-Ranges. ExoPlayer descarga el archivo
+    // completo antes de reproducir. Solo funcionan archivos < ~1MB.
+    // Pixabay tiny: probados en fisico (el emulador los bloquea por red virtual).
 
-    // -- Wikimedia WebM (confirmados funcionando) --
-    private const val WK_EGYPT  = "https://upload.wikimedia.org/wikipedia/commons/5/5c/Dream_Machine_Egypt_animation.webm"  // 0.8MB ✅ fisico OK
-    private const val WK_GIZA   = "https://upload.wikimedia.org/wikipedia/commons/4/43/Giza_pyramid_complex_3D_flyover.webm" // 2.5MB webm
-    private const val WK_NUBIA  = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Nuri_Pyramids_from_top_of_the_Pyramid_of_King_Taharqa.webm" // 16MB webm
-    private const val WK_MUMMY  = "https://upload.wikimedia.org/wikipedia/commons/7/73/US_Scientists_Get_Closer_Look_at_Egyptian_Mummy.webm"       // 7.4MB webm
-    private const val WK_CAIRO  = "https://upload.wikimedia.org/wikipedia/commons/a/a8/Open_street_maps_zooming_to_Cairo%2C_Egypt.webm"            // 5.4MB webm
+    // Wikimedia WebM confirmados funcionando en fisico (< 1MB, se descargan completos):
+    private const val WK_EGYPT   = "https://upload.wikimedia.org/wikipedia/commons/5/5c/Dream_Machine_Egypt_animation.webm"          // 789KB ✅
+    private const val WK_CAPITAL = "https://upload.wikimedia.org/wikipedia/commons/3/3b/Constructing_Egypt%E2%80%99s_New_Capital_%28153237%29.webm" // 932KB - nueva capital
 
-    // -- Pixabay MP4 tiny (probar en fisico) --
-    private const val PX_FARAON    = "https://cdn.pixabay.com/video/2023/07/15/171704-845775857_tiny.mp4"
-    private const val PX_ANUBIS    = "https://cdn.pixabay.com/video/2024/03/11/203845-922675645_tiny.mp4"
-    private const val PX_CAMELLO   = "https://cdn.pixabay.com/video/2023/11/24/190550-888131763_tiny.mp4"
-    private const val PX_PIRAMIDE  = "https://cdn.pixabay.com/video/2024/03/24/205415-926967131_tiny.mp4"
-    private const val PX_ESFINGE   = "https://cdn.pixabay.com/video/2021/06/13/77540-562572367_tiny.mp4"
-    private const val PX_TEMPLO    = "https://cdn.pixabay.com/video/2024/05/13/211847_tiny.mp4"
-    private const val PX_HIEROGLYPH= "https://cdn.pixabay.com/video/2019/04/26/23073-332665413_tiny.mp4"
-    private const val PX_MOMIA     = "https://cdn.pixabay.com/video/2024/05/13/211846_tiny.mp4"
-    private const val PX_FARAON2   = "https://cdn.pixabay.com/video/2024/06/06/215544_tiny.mp4"
-    private const val PX_CAIRO     = "https://cdn.pixabay.com/video/2015/12/04/1565-148219771_tiny.mp4"
+    // Pixabay MP4 tiny (a probar en fisico):
+    private const val PX_FARAON     = "https://cdn.pixabay.com/video/2023/07/15/171704-845775857_tiny.mp4"
+    private const val PX_ANUBIS     = "https://cdn.pixabay.com/video/2024/03/11/203845-922675645_tiny.mp4"
+    private const val PX_CAMELLO    = "https://cdn.pixabay.com/video/2023/11/24/190550-888131763_tiny.mp4"
+    private const val PX_PIRAMIDE   = "https://cdn.pixabay.com/video/2024/03/24/205415-926967131_tiny.mp4"
+    private const val PX_ESFINGE    = "https://cdn.pixabay.com/video/2021/06/13/77540-562572367_tiny.mp4"
+    private const val PX_TEMPLO     = "https://cdn.pixabay.com/video/2024/05/13/211847_tiny.mp4"
+    private const val PX_HIEROGLYPH = "https://cdn.pixabay.com/video/2019/04/26/23073-332665413_tiny.mp4"
+    private const val PX_MOMIA      = "https://cdn.pixabay.com/video/2024/05/13/211846_tiny.mp4"
+    private const val PX_FARAON2    = "https://cdn.pixabay.com/video/2024/06/06/215544_tiny.mp4"
+    private const val PX_CAIRO      = "https://cdn.pixabay.com/video/2015/12/04/1565-148219771_tiny.mp4"
+    private const val PX_DESIERTO   = "https://cdn.pixabay.com/video/2023/11/24/190550-888131763_tiny.mp4"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1", "Vida en el Antiguo Egipto",      WK_EGYPT,    "Animacion del Antiguo Egipto"),         // webm ✅
-        VideoItem("vc_vid_2", "Un dia con el faraon",           PX_FARAON,   "Vida cotidiana bajo los faraones"),     // px tiny
-        VideoItem("vc_vid_3", "Caravanas en el desierto",       PX_CAMELLO,  "Camellos y comercio en el desierto"),   // px tiny
-        VideoItem("vc_vid_4", "El Cairo antiguo y moderno",     PX_CAIRO,    "La capital del Antiguo Egipto"),        // px tiny
-        VideoItem("vc_vid_5", "Dioses y rituales",              PX_ANUBIS,   "Anubis y la religion egipcia")          // px tiny
+        VideoItem("vc_vid_1", "Vida en el Antiguo Egipto",      WK_EGYPT,    "Animacion del Antiguo Egipto"),        // ✅ webm 789KB
+        VideoItem("vc_vid_2", "Nueva capital de Egipto",        WK_CAPITAL,  "Construccion de la nueva capital"),    // webm 932KB
+        VideoItem("vc_vid_3", "Un dia con el faraon",           PX_FARAON,   "Vida cotidiana bajo los faraones"),    // px tiny
+        VideoItem("vc_vid_4", "Caravanas en el desierto",       PX_CAMELLO,  "Camellos y comercio en el desierto"),  // px tiny
+        VideoItem("vc_vid_5", "Dioses y rituales de Egipto",    PX_ANUBIS,   "Anubis y la religion egipcia")         // px tiny
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1", "Vuelo 3D sobre Giza",           WK_GIZA,     "Recreacion 3D de las piramides"),       // webm
-        VideoItem("arq_vid_2", "Las Piramides de Giza",         PX_PIRAMIDE, "Las maravillas de Giza"),               // px tiny
-        VideoItem("arq_vid_3", "La Gran Esfinge",               PX_ESFINGE,  "Guardian de la meseta de Giza"),        // px tiny
-        VideoItem("arq_vid_4", "Templos del Nilo",              PX_TEMPLO,   "Los grandes templos egipcios"),         // px tiny
-        VideoItem("arq_vid_5", "Piramides de Nubia",            WK_NUBIA,    "Las piramides del Rey Taharqa")         // webm
+        VideoItem("arq_vid_1", "Animacion del Antiguo Egipto",  WK_EGYPT,    "Arte y arquitectura del Antiguo Egipto"), // ✅ webm
+        VideoItem("arq_vid_2", "Las Piramides de Giza",         PX_PIRAMIDE, "Las maravillas de Giza"),              // px tiny
+        VideoItem("arq_vid_3", "La Gran Esfinge",               PX_ESFINGE,  "Guardian de la meseta de Giza"),       // px tiny
+        VideoItem("arq_vid_4", "Templos del Nilo",              PX_TEMPLO,   "Los grandes templos egipcios"),        // px tiny
+        VideoItem("arq_vid_5", "El Cairo: ciudad faraonica",    PX_CAIRO,    "La capital historica de Egipto")       // px tiny
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1", "Jeroglificos: escritura sagrada",PX_HIEROGLYPH,"El sistema de escritura de Egipto"),  // px tiny
-        VideoItem("art_vid_2", "Momias y arte funerario",        WK_MUMMY,    "Ciencia y arte en la momificacion"),   // webm
-        VideoItem("art_vid_3", "El faraon en el arte",          PX_FARAON2,  "Representacion del faraon"),            // px tiny
-        VideoItem("art_vid_4", "El Cairo como obra de arte",    WK_CAIRO,    "Arquitectura y arte en El Cairo"),      // webm
-        VideoItem("art_vid_5", "Momias: arte para la eternidad",PX_MOMIA,    "El arte de preservar para siempre")     // px tiny
+        VideoItem("art_vid_1", "Arte del Antiguo Egipto",       WK_EGYPT,    "Animacion sobre el arte egipcio"),     // ✅ webm
+        VideoItem("art_vid_2", "Jeroglificos: escritura sagrada",PX_HIEROGLYPH,"El sistema de escritura de Egipto"), // px tiny
+        VideoItem("art_vid_3", "El faraon en el arte egipcio",  PX_FARAON2,  "Representacion del faraon"),           // px tiny
+        VideoItem("art_vid_4", "Momias y arte funerario",       PX_MOMIA,    "El arte de preservar para la eternidad"), // px tiny
+        VideoItem("art_vid_5", "Nueva Egipto: arte y ciudad",   WK_CAPITAL,  "La nueva capital egipcia")             // webm 932KB
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
