@@ -25,9 +25,14 @@ import androidx.media3.ui.PlayerView
 
 /**
  * VideoPlayerView con ExoPlayer.
- * Soporta HLS (.m3u8) y MP4 directo (Pixabay CDN).
- * Fuerza MimeTypes.VIDEO_MP4 para evitar que content-type
- * "binary/octet-stream" confunda a ExoPlayer.
+ * Soporta:
+ *  - HLS (.m3u8)
+ *  - WebM / OGV de Wikimedia Commons  <-- nuevo
+ *  - MP4 directo
+ *
+ * Wikimedia Commons es la fuente de video verificada:
+ * responde 206 con bytes reales en Range requests.
+ * Pixabay bloquea hotlinking de video desde apps externas.
  */
 @androidx.annotation.OptIn(UnstableApi::class)
 @Composable
@@ -44,26 +49,28 @@ fun VideoPlayerView(
 
     LaunchedEffect(videoUrl) {
         val dataSourceFactory = DefaultHttpDataSource.Factory()
-            .setUserAgent("MuseoEgiptoApp/1.0 (Android)")
+            .setUserAgent("Mozilla/5.0 (Android) MuseoEgipto/1.0")
             .setAllowCrossProtocolRedirects(true)
 
         val uri = Uri.parse(videoUrl)
 
-        val mediaSource = if (videoUrl.contains(".m3u8")) {
-            // Stream HLS
-            val mediaItem = MediaItem.Builder()
-                .setUri(uri)
-                .setMimeType(MimeTypes.APPLICATION_M3U8)
-                .build()
-            HlsMediaSource.Factory(dataSourceFactory).createMediaSource(mediaItem)
-        } else {
-            // MP4 directo — forzar MIME type para evitar problemas con
-            // servidores que devuelven binary/octet-stream
-            val mediaItem = MediaItem.Builder()
-                .setUri(uri)
-                .setMimeType(MimeTypes.VIDEO_MP4)
-                .build()
-            ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(mediaItem)
+        // Detectar MIME type por extension de URL
+        val mediaSource = when {
+            videoUrl.contains(".m3u8") -> {
+                val item = MediaItem.Builder().setUri(uri).setMimeType(MimeTypes.APPLICATION_M3U8).build()
+                HlsMediaSource.Factory(dataSourceFactory).createMediaSource(item)
+            }
+            videoUrl.contains(".webm") || videoUrl.contains(".ogv") || videoUrl.contains(".ogg") -> {
+                // WebM y OGV: usar ProgressiveMediaSource sin forzar MIME
+                // ExoPlayer detecta el codec (VP8/VP9/Theora) automaticamente
+                ProgressiveMediaSource.Factory(dataSourceFactory)
+                    .createMediaSource(MediaItem.fromUri(uri))
+            }
+            else -> {
+                // MP4: forzar MIME type por si el servidor devuelve octet-stream
+                val item = MediaItem.Builder().setUri(uri).setMimeType(MimeTypes.VIDEO_MP4).build()
+                ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(item)
+            }
         }
 
         exoPlayer.setMediaSource(mediaSource)
@@ -97,7 +104,7 @@ fun VideoPlayerView(
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
             when (event) {
-                Lifecycle.Event.ON_PAUSE -> exoPlayer.pause()
+                Lifecycle.Event.ON_PAUSE  -> exoPlayer.pause()
                 Lifecycle.Event.ON_RESUME -> { }
                 else -> {}
             }
