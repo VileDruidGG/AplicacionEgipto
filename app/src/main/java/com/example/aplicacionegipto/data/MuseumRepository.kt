@@ -86,66 +86,71 @@ object MuseumRepository {
     )
 
     // === AUDIOS: URLs directas de Pixabay CDN (MP3) ===
-    // Verificadas: cdn.pixabay.com sirve MP3 sin autenticacion, compatibles con ExoPlayer
-    // (*) = pendiente de verificar contenido exacto, usa mercado como fallback tematico
-
-    private const val PX_MERCADO     = "https://cdn.pixabay.com/download/audio/2025/02/28/audio_9648650449.mp3?filename=forza1903-turkish-market-ambience-307310.mp3"
-    private const val PX_RIO         = "https://cdn.pixabay.com/download/audio/2024/02/09/audio_9c2c7a103a.mp3?filename=kamhunt-run-130bpm-190419.mp3"
-    private const val PX_ARPA        = "https://cdn.pixabay.com/download/audio/2025/04/20/audio_59ef900d77.mp3?filename=aivion-sinfonia-de-luces-329882.mp3"
-    private const val PX_FUEGO       = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_0468be3726.mp3?filename=freesound_community-fire-magic-6947.mp3"
-    private const val PX_CUEVA       = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_27330a697b.mp3?filename=freesound_community-leaves-crunching-6954.mp3"
-    private const val PX_CALMA       = "https://cdn.pixabay.com/download/audio/2024/03/21/audio_ba480d6d0d.mp3?filename=vicatestudio-chill-clam-short-version-3-197548.mp3"
-    private const val PX_MISTERIO    = "https://cdn.pixabay.com/download/audio/2025/05/22/audio_1e09545526.mp3?filename=simon-le-grec-simon-le-grec-city-walk-smooth-soulful-chill-music-345421.mp3"
-    private const val PX_TALLER      = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_a3c625517b.mp3?filename=freesound_community-factory1-6808.mp3"
+    private const val PX_MERCADO  = "https://cdn.pixabay.com/download/audio/2025/02/28/audio_9648650449.mp3?filename=forza1903-turkish-market-ambience-307310.mp3"
+    private const val PX_RIO      = "https://cdn.pixabay.com/download/audio/2024/02/09/audio_9c2c7a103a.mp3?filename=kamhunt-run-130bpm-190419.mp3"
+    private const val PX_ARPA     = "https://cdn.pixabay.com/download/audio/2025/04/20/audio_59ef900d77.mp3?filename=aivion-sinfonia-de-luces-329882.mp3"
+    private const val PX_FUEGO    = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_0468be3726.mp3?filename=freesound_community-fire-magic-6947.mp3"
+    private const val PX_CUEVA    = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_27330a697b.mp3?filename=freesound_community-leaves-crunching-6954.mp3"
+    private const val PX_CALMA    = "https://cdn.pixabay.com/download/audio/2024/03/21/audio_ba480d6d0d.mp3?filename=vicatestudio-chill-clam-short-version-3-197548.mp3"
+    private const val PX_MISTERIO = "https://cdn.pixabay.com/download/audio/2025/05/22/audio_1e09545526.mp3?filename=simon-le-grec-simon-le-grec-city-walk-smooth-soulful-chill-music-345421.mp3"
+    private const val PX_TALLER   = "https://cdn.pixabay.com/download/audio/2021/08/09/audio_a3c625517b.mp3?filename=freesound_community-factory1-6808.mp3"
 
     private val vidaCotidianaAudios = listOf(
-        AudioItem("vc_aud_1", "Sonidos del mercado",   PX_MERCADO,  AudioType.AMBIENT,   "Ambiente de mercado antiguo"),
-        AudioItem("vc_aud_2", "Vida junto al Nilo",    PX_RIO,      AudioType.AMBIENT,   "Sonidos del rio Nilo"),
-        AudioItem("vc_aud_3", "Arpa egipcia",           PX_ARPA,     AudioType.MUSIC,     "Melodia de arpa instrumental"),
-        AudioItem("vc_aud_4", "Cantos de trabajo",     PX_MERCADO,  AudioType.AMBIENT,   "Voces y canticos de artesanos"),
-        AudioItem("vc_aud_5", "Cocina del faraon",     PX_FUEGO,    AudioType.AMBIENT,   "Fuego y sonidos de cocina")
+        AudioItem("vc_aud_1", "Sonidos del mercado",    PX_MERCADO,  AudioType.AMBIENT, "Ambiente de mercado antiguo"),
+        AudioItem("vc_aud_2", "Vida junto al Nilo",     PX_RIO,      AudioType.AMBIENT, "Sonidos del rio Nilo"),
+        AudioItem("vc_aud_3", "Arpa egipcia",            PX_ARPA,     AudioType.MUSIC,   "Melodia de arpa instrumental"),
+        AudioItem("vc_aud_4", "Cantos de trabajo",      PX_MERCADO,  AudioType.AMBIENT, "Voces y canticos de artesanos"),
+        AudioItem("vc_aud_5", "Cocina del faraon",      PX_FUEGO,    AudioType.AMBIENT, "Fuego y sonidos de cocina")
     )
     private val arquitecturaAudios = listOf(
-        AudioItem("arq_aud_1", "Ecos en la Piramide",  PX_CUEVA,    AudioType.AMBIENT,   "Resonancia en camara de piedra"),
-        AudioItem("arq_aud_2", "Construccion",          PX_TALLER,   AudioType.AMBIENT,   "Trabajo y construccion"),
-        AudioItem("arq_aud_3", "Himnos de Karnak",     PX_CALMA,    AudioType.MUSIC,     "Musica calma y ceremonial"),
-        AudioItem("arq_aud_4", "Viento del desierto",  PX_MERCADO,  AudioType.AMBIENT,   "Viento y ambiente desertico"),
-        AudioItem("arq_aud_5", "Secretos de la Esfinge", PX_MISTERIO, AudioType.MUSIC,   "Musica misteriosa y profunda")
+        AudioItem("arq_aud_1", "Ecos en la Piramide",   PX_CUEVA,    AudioType.AMBIENT, "Resonancia en camara de piedra"),
+        AudioItem("arq_aud_2", "Construccion",           PX_TALLER,   AudioType.AMBIENT, "Trabajo y construccion"),
+        AudioItem("arq_aud_3", "Himnos de Karnak",      PX_CALMA,    AudioType.MUSIC,   "Musica calma y ceremonial"),
+        AudioItem("arq_aud_4", "Viento del desierto",   PX_MERCADO,  AudioType.AMBIENT, "Viento y ambiente desertico"),
+        AudioItem("arq_aud_5", "Secretos de la Esfinge",PX_MISTERIO, AudioType.MUSIC,   "Musica misteriosa y profunda")
     )
     private val arteAudios = listOf(
-        AudioItem("art_aud_1", "Taller del escultor",  PX_TALLER,   AudioType.AMBIENT,   "Sonidos de taller y herramientas"),
-        AudioItem("art_aud_2", "Jeroglificos",          PX_CALMA,    AudioType.MUSIC,     "Musica contemplativa"),
-        AudioItem("art_aud_3", "Musica de Osiris",      PX_MISTERIO, AudioType.MUSIC,     "Musica ritual del Mas Alla"),
-        AudioItem("art_aud_4", "Pigmentos y colores",   PX_RIO,      AudioType.AMBIENT,   "Sonidos suaves de preparacion"),
-        AudioItem("art_aud_5", "Tesoros de Tutankamon", PX_ARPA,     AudioType.MUSIC,     "Melodia solemne y dorada")
+        AudioItem("art_aud_1", "Taller del escultor",   PX_TALLER,   AudioType.AMBIENT, "Sonidos de taller y herramientas"),
+        AudioItem("art_aud_2", "Jeroglificos",           PX_CALMA,    AudioType.MUSIC,   "Musica contemplativa"),
+        AudioItem("art_aud_3", "Musica de Osiris",       PX_MISTERIO, AudioType.MUSIC,   "Musica ritual del Mas Alla"),
+        AudioItem("art_aud_4", "Pigmentos y colores",    PX_RIO,      AudioType.AMBIENT, "Sonidos suaves de preparacion"),
+        AudioItem("art_aud_5", "Tesoros de Tutankamon",  PX_ARPA,     AudioType.MUSIC,   "Melodia solemne y dorada")
     )
 
-    // === VIDEOS HLS con tematica egipcia ===
-    private const val HLS_TEARS  = "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8"
-    private const val HLS_APPLE  = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"
-    private const val HLS_AKAMAI = "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
-    private const val HLS_BLENDER= "https://ireplay.tv/test/blender.m3u8"
+    // === VIDEOS: MP4 directos de Pixabay CDN (sin token, permanentes) ===
+    // Verificados: cdn.pixabay.com/video/ son URLs publicas sin autenticacion
+    private const val VID_FARAON     = "https://cdn.pixabay.com/video/2023/07/15/171704-845775857_large.mp4"
+    private const val VID_ANUBIS     = "https://cdn.pixabay.com/video/2024/03/11/203845-922675645_large.mp4"
+    private const val VID_CAMELLO    = "https://cdn.pixabay.com/video/2023/11/24/190550-888131763_large.mp4"
+    private const val VID_CAIRO      = "https://cdn.pixabay.com/video/2015/12/04/1565-148219771_medium.mp4"
+    private const val VID_PIRAMIDE1  = "https://cdn.pixabay.com/video/2024/03/24/205415-926967131_large.mp4"
+    private const val VID_PIRAMIDE2  = "https://cdn.pixabay.com/video/2022/12/06/141914-778907051_tiny.mp4"
+    private const val VID_ESFINGE    = "https://cdn.pixabay.com/video/2021/06/13/77540-562572367_tiny.mp4"
+    private const val VID_TEMPLO     = "https://cdn.pixabay.com/video/2024/05/13/211847_large.mp4"
+    private const val VID_FARAON2    = "https://cdn.pixabay.com/video/2024/06/06/215544_large.mp4"
+    private const val VID_HIEROGLYPH = "https://cdn.pixabay.com/video/2019/04/26/23073-332665413_large.mp4"
+    private const val VID_MOMIA      = "https://cdn.pixabay.com/video/2024/05/13/211846_large.mp4"
 
     private val vidaCotidianaVideos = listOf(
-        VideoItem("vc_vid_1","Secretos culinarios del Antiguo Egipto",HLS_TEARS,"Pan y cerveza eran los alimentos basicos de los egipcios"),
-        VideoItem("vc_vid_2","Vestimenta y moda egipcia",HLS_APPLE,"El lino era la tela preferida para la vestimenta diaria"),
-        VideoItem("vc_vid_3","La familia en el Antiguo Egipto",HLS_AKAMAI,"La familia era el centro de la sociedad egipcia"),
-        VideoItem("vc_vid_4","Juegos y entretenimiento",HLS_BLENDER,"El Senet era el juego de mesa mas popular del Antiguo Egipto"),
-        VideoItem("vc_vid_5","Medicina y magia curativa",HLS_TEARS,"Los medicos egipcios combinaban ciencia y rituales magicos")
+        VideoItem("vc_vid_1", "Un dia en el Antiguo Egipto",      VID_FARAON,  "Vida cotidiana bajo el reinado de los faraones"),
+        VideoItem("vc_vid_2", "Caravanas y comercio en el Nilo",  VID_CAMELLO, "Camellos y rutas comerciales del desierto egipcio"),
+        VideoItem("vc_vid_3", "El Cairo: ciudad de los faraones", VID_CAIRO,   "La capital egipcia y sus monumentos historicos"),
+        VideoItem("vc_vid_4", "Dioses y rituales de Egipto",      VID_ANUBIS,  "Anubis y la religion del Antiguo Egipto"),
+        VideoItem("vc_vid_5", "Arena y desierto egipcio",         VID_PIRAMIDE2,"El desierto y los grandes monumentos de piedra")
     )
     private val arquitecturaVideos = listOf(
-        VideoItem("arq_vid_1","Las Grandes Piramides de Giza",HLS_TEARS,"La construccion de las piramides sigue asombrando al mundo"),
-        VideoItem("arq_vid_2","Templos de Karnak y Luxor",HLS_APPLE,"El complejo religioso mas grande del mundo antiguo"),
-        VideoItem("arq_vid_3","La Gran Esfinge de Giza",HLS_AKAMAI,"Cuerpo de leon y cabeza humana guardan la meseta de Giza"),
-        VideoItem("arq_vid_4","Tumbas del Valle de los Reyes",HLS_BLENDER,"Lugar de descanso eterno de los faraones del Imperio Nuevo"),
-        VideoItem("arq_vid_5","Obeliscos: agujas del cielo",HLS_TEARS,"Monumentos que conectaban la tierra con los dioses")
+        VideoItem("arq_vid_1", "Las Piramides de Giza",           VID_PIRAMIDE1,"Las tres grandes piramides de la meseta de Giza"),
+        VideoItem("arq_vid_2", "Piramides: maravilla del mundo",  VID_PIRAMIDE2,"La Gran Piramide de Keops y sus secretos"),
+        VideoItem("arq_vid_3", "La Gran Esfinge de Giza",         VID_ESFINGE,  "Guardian milenario de la meseta de Giza"),
+        VideoItem("arq_vid_4", "Templos del Nilo",                VID_TEMPLO,   "Los grandes templos religiosos del Antiguo Egipto"),
+        VideoItem("arq_vid_5", "El faraon: dios y arquitecto",    VID_FARAON2,  "Los faraones que ordenaron construir los grandes monumentos")
     )
     private val arteVideos = listOf(
-        VideoItem("art_vid_1","Jeroglificos: escritura sagrada",HLS_TEARS,"Los jeroglificos fueron descifrados con la Piedra Rosetta"),
-        VideoItem("art_vid_2","Pintura mural en las tumbas",HLS_APPLE,"Colores vibrantes que han sobrevivido miles de anos"),
-        VideoItem("art_vid_3","Escultura monumental egipcia",HLS_AKAMAI,"Desde amuletos diminutos hasta colosos de Ramses"),
-        VideoItem("art_vid_4","La mascara de Tutankamon",HLS_BLENDER,"Once kilos de oro puro cubrian el rostro del joven faraon"),
-        VideoItem("art_vid_5","Arte funerario y sarcofagos",HLS_TEARS,"Ataudes decorados para proteger el viaje al Mas Alla")
+        VideoItem("art_vid_1", "Jeroglificos: escritura sagrada", VID_HIEROGLYPH,"El sistema de escritura del Antiguo Egipto"),
+        VideoItem("art_vid_2", "Momias y arte funerario",         VID_MOMIA,     "El arte de preservar para la eternidad"),
+        VideoItem("art_vid_3", "Dioses del Mas Alla",             VID_ANUBIS,    "Anubis, Osiris y los dioses del mundo de los muertos"),
+        VideoItem("art_vid_4", "Piramides como obras de arte",    VID_PIRAMIDE1, "La arquitectura como expresion artistica suprema"),
+        VideoItem("art_vid_5", "El faraon en el arte egipcio",    VID_FARAON,    "La representacion del faraon en esculturas y relieves")
     )
 
     fun getImageUrls(sectionId: String) = when(sectionId) { "vida_cotidiana"->imageUrlsVidaCotidiana; "arquitectura"->imageUrlsArquitectura; "arte"->imageUrlsArte; else->emptyList() }
