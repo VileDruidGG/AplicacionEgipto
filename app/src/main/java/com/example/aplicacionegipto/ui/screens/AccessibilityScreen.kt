@@ -29,8 +29,6 @@ fun AccessibilityScreen(
     onAudioDescChange: (Boolean) -> Unit,
     onBack: () -> Unit
 ) {
-    var haptic by remember { mutableStateOf(true) }
-
     Scaffold(topBar = {
         TopAppBar(
             title = { Text("Accesibilidad", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)) },
@@ -57,18 +55,27 @@ fun AccessibilityScreen(
             // Tamaño de texto
             AS(Icons.Default.TextFields, "Tamano de texto", "Ajusta el tamano de todo el texto.") {
                 Column {
-                    Text("Texto de ejemplo - Antiguo Egipto", style = MaterialTheme.typography.bodyLarge.copy(fontSize = (16 * currentTextScale).sp),
-                        modifier = Modifier.semantics { contentDescription = "Vista previa: ${(currentTextScale * 100).toInt()}%" })
+                    Text(
+                        "Texto de ejemplo - Antiguo Egipto",
+                        style = MaterialTheme.typography.bodyLarge.copy(fontSize = (16 * currentTextScale).sp),
+                        modifier = Modifier.semantics { contentDescription = "Vista previa: ${(currentTextScale * 100).toInt()}%" }
+                    )
                     Spacer(Modifier.height(8.dp))
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("A", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
-                        Slider(currentTextScale, onTextScaleChange, valueRange = 0.8f..2.0f, steps = 5,
+                        Slider(
+                            currentTextScale, onTextScaleChange, valueRange = 0.8f..2.0f, steps = 5,
                             modifier = Modifier.weight(1f).semantics { contentDescription = "Escala de texto: ${(currentTextScale * 100).toInt()}%. Desliza para ajustar." },
-                            colors = SliderDefaults.colors(thumbColor = GoldPharaoh, activeTrackColor = GoldPharaoh))
+                            colors = SliderDefaults.colors(thumbColor = GoldPharaoh, activeTrackColor = GoldPharaoh)
+                        )
                         Text("A", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f))
                     }
-                    Text("Escala: ${(currentTextScale * 100).toInt()}%", style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f), modifier = Modifier.align(Alignment.CenterHorizontally))
+                    Text(
+                        "Escala: ${(currentTextScale * 100).toInt()}%",
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    )
                 }
             }
 
@@ -76,13 +83,15 @@ fun AccessibilityScreen(
             AS(Icons.Default.Contrast, "Alto contraste", "Aumenta el contraste para mejorar legibilidad.") {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                     Text(if (currentHighContrast) "Activado" else "Desactivado", style = MaterialTheme.typography.bodyLarge)
-                    Switch(currentHighContrast, onHighContrastChange,
+                    Switch(
+                        currentHighContrast, onHighContrastChange,
                         modifier = Modifier.semantics { contentDescription = "Alto contraste ${if (currentHighContrast) "activado" else "desactivado"}" },
-                        colors = SwitchDefaults.colors(checkedThumbColor = GoldPharaoh, checkedTrackColor = GoldPharaoh.copy(alpha = 0.5f)))
+                        colors = SwitchDefaults.colors(checkedThumbColor = GoldPharaoh, checkedTrackColor = GoldPharaoh.copy(alpha = 0.5f))
+                    )
                 }
             }
 
-            // Audio descriptivo — ahora conectado al estado global del NavGraph
+            // Audio descriptivo
             AS(Icons.Default.RecordVoiceOver, "Audio descriptivo", "Reproduce la descripcion de cada imagen automaticamente al abrirla.") {
                 Column {
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
@@ -105,22 +114,19 @@ fun AccessibilityScreen(
                 }
             }
 
-            // Haptic
-            AS(Icons.Default.Vibration, "Retroalimentacion haptica", "Vibracion sutil al interactuar con gestos tactiles.") {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    Text(if (haptic) "Activado" else "Desactivado", style = MaterialTheme.typography.bodyLarge)
-                    Switch(haptic, { haptic = it },
-                        colors = SwitchDefaults.colors(checkedThumbColor = GoldPharaoh, checkedTrackColor = GoldPharaoh.copy(alpha = 0.5f)))
-                }
-            }
-
             // Nota TalkBack
-            Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))) {
+            Card(
+                Modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
+            ) {
                 Column(Modifier.padding(16.dp).semantics { contentDescription = "Compatible con TalkBack y lectores de pantalla." }) {
                     Text("Compatibilidad con lectores de pantalla", style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold), color = MaterialTheme.colorScheme.primary)
                     Spacer(Modifier.height(4.dp))
-                    Text("Esta aplicacion es compatible con TalkBack y otros servicios de accesibilidad de Android. Todos los botones, imagenes y gestos incluyen descripciones detalladas.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f))
+                    Text(
+                        "Esta aplicacion es compatible con TalkBack y otros servicios de accesibilidad de Android. Todos los botones, imagenes y gestos incluyen descripciones detalladas.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    )
                 }
             }
             Spacer(Modifier.height(32.dp))
