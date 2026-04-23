@@ -79,24 +79,39 @@ private fun WelcomeHeader() {
 
 @Composable
 private fun SectionCard(data: SectionData, onClick: () -> Unit) {
+    // FIX: el gradiente va directo en el Column que contiene el texto,
+    // asi siempre cubre exactamente lo que ocupa la tarjeta, sin altura fija.
+    val gradient = Brush.horizontalGradient(data.gradientColors + data.gradientColors.last().copy(alpha = 0.7f))
     Card(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick, onClickLabel = "Abrir seccion ${data.title}").semantics { contentDescription = data.accessibilityLabel },
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick, onClickLabel = "Abrir seccion ${data.title}")
+            .semantics { contentDescription = data.accessibilityLabel },
         shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent)
     ) {
-        Box {
-            Box(Modifier.fillMaxWidth().height(180.dp).background(Brush.horizontalGradient(data.gradientColors + data.gradientColors.last().copy(alpha = 0.7f))))
-            Column(Modifier.fillMaxWidth().padding(20.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(data.icon, fontSize = 36.sp, modifier = Modifier.background(Color.White.copy(alpha = 0.15f), CircleShape).padding(8.dp))
-                    Column {
-                        Text(data.title.uppercase(), style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = 2.sp), color = Color.White)
-                        Text(data.subtitle, style = MaterialTheme.typography.bodyMedium, color = Color.White.copy(alpha = 0.85f))
-                    }
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(gradient)
+                .padding(20.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(
+                    data.icon,
+                    fontSize = 36.sp,
+                    modifier = Modifier
+                        .background(Color.White.copy(alpha = 0.15f), CircleShape)
+                        .padding(8.dp)
+                )
+                Column {
+                    Text(data.title.uppercase(), style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold, letterSpacing = 2.sp), color = Color.White)
+                    Text(data.subtitle, style = MaterialTheme.typography.bodyMedium, color = Color.White.copy(alpha = 0.85f))
                 }
-                Spacer(Modifier.height(12.dp))
-                Text(data.description, style = MaterialTheme.typography.bodyMedium, color = Color.White.copy(alpha = 0.9f), lineHeight = 20.sp)
             }
+            Spacer(Modifier.height(12.dp))
+            Text(data.description, style = MaterialTheme.typography.bodyMedium, color = Color.White.copy(alpha = 0.9f), lineHeight = 20.sp)
         }
     }
 }
